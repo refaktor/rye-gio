@@ -1,0 +1,35 @@
+
+
+
+
+
+do\par gioui {
+	
+	go fn\in { } current {
+		
+		win: app-window
+		thm: material-theme
+		
+		forever {
+			evt:: win .event
+			
+			switch evt .kind {
+				"app.DestroyEvent" { return 0 }
+				"app.FrameEvent" {
+					ops:: op-ops
+					gtx:: app-context ops evt
+
+					title:: material-h-1 thm "Hello, Gio"
+					|alignment! text-middle
+					|layout gtx
+					
+					frm:: evt .frame?
+					frm gtx .ops?
+				}
+			}
+		}
+		exit 0
+	}
+	app-main
+}
+
