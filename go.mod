@@ -4,14 +4,18 @@ go 1.23
 
 toolchain go1.23.2
 
+replace github.com/refaktor/rye => ../rye
+
 require (
+	gioui.org v0.7.1
+	github.com/go-text/typesetting v0.1.1
 	github.com/refaktor/rye v0.0.24
 	github.com/refaktor/ryegen v0.1.1-0.20241004110956-28a8a8e5f0c5
+	golang.org/x/image v0.18.0
 )
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
-	gioui.org v0.7.1 // indirect
 	gioui.org/cpu v0.0.0-20210817075930-8d6a761490d2 // indirect
 	gioui.org/shader v1.0.8 // indirect
 	github.com/BurntSushi/toml v1.4.0 // indirect
@@ -59,7 +63,6 @@ require (
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible // indirect
-	github.com/go-text/typesetting v0.1.1 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/gobwas/ws v1.4.0 // indirect
@@ -108,7 +111,6 @@ require (
 	golang.org/x/crypto v0.27.0 // indirect
 	golang.org/x/exp v0.0.0-20240707233637-46b078467d37 // indirect
 	golang.org/x/exp/shiny v0.0.0-20240707233637-46b078467d37 // indirect
-	golang.org/x/image v0.18.0 // indirect
 	golang.org/x/mod v0.21.0 // indirect
 	golang.org/x/net v0.29.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect

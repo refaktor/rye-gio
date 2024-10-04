@@ -22,7 +22,7 @@ do\par gioui {
 					title:: material-h-1 thm "Hello, Gio"
 					|alignment! text-middle
 					|layout gtx
-					
+
 					frm:: evt .frame?
 					frm gtx .ops?
 				}
