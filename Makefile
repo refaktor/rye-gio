@@ -5,10 +5,13 @@ export PATH:=$(BIN_ROOT):$(PATH)
 
 NAME=rye-gioui
 
-all: bin
+all: gen bin
 
 print:
+	@echo ""
 
+gen:
+	cd gioui && go run .
 bin:
 	mkdir -p $(BIN_ROOT)
 	go build -o $(BIN_ROOT)/$(NAME)

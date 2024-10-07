@@ -13253,12 +13253,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 					switch v := it.(type) {
 					case env.Native:
 						var ok bool
-						fc, ok := v.Value.(*layout.FlexChild)
+						arg2Val[i], ok = v.Value.(layout.FlexChild)
 						if !ok {
 							ps.FailureFlag = true
 							return env.NewError("Go(*layout.Flex)//layout: arg 3: block item: expected native of type layout.FlexChild")
 						}
-						arg2Val[i] = *fc
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*layout.Flex)//layout: arg 3: block item: expected native")
@@ -13571,7 +13570,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 							switch v := ps.Res.(type) {
 							case env.Native:
 								var ok bool
-								resYY, ok := v.Value.(*layout.Dimensions)
+								res, ok = v.Value.(layout.Dimensions)
 								if !ok {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 										"Go(*layout.Inset)//layout: arg 3: callback result: expected native of type layout.Dimensions",
@@ -13580,7 +13579,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 									)
 									return res
 								}
-								res = *resYY
 							default:
 								fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 									"Go(*layout.Inset)//layout: arg 3: callback result: expected native",
@@ -40692,8 +40690,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 							switch v := ps.Res.(type) {
 							case env.Native:
 								var ok bool
-								resYY, ok := v.Value.(*layout.Dimensions)
-								
+								res, ok = v.Value.(layout.Dimensions)
 								if !ok {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 										"layout-rigid: arg 1: callback result: expected native of type layout.Dimensions",
@@ -40702,7 +40699,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 									)
 									return res
 								}
-								res = *resYY
 							default:
 								fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 									"layout-rigid: arg 1: callback result: expected native",
