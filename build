@@ -1,1 +1,1 @@
-go build -o bin/rye-gioui
+go build -o bin/rye-gio

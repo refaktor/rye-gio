@@ -2,7 +2,7 @@ package main
 
 import (
 	/*RYEGEN: BEGIN IMPORTS*/
-	"rye_badger/ryegen_bindings/gioui_org"
+	"rye-gio/ryegen_bindings/gioui_org"
 	/*RYEGEN: END IMPORTS*/
 
 	"github.com/refaktor/rye/env"
@@ -13,7 +13,7 @@ import (
 func main() {
 	runner.DoMain(func(ps *env.ProgramState) {
 		/*RYEGEN: BEGIN BUILTINS*/
-		evaldo.RegisterBuiltinsInContext(gioui_org.Builtins, ps, "gioui")
+		evaldo.RegisterBuiltinsInContext(gioui_org.Builtins, ps, "gio")
 		/*RYEGEN: END BUILTINS*/
 	})
 }

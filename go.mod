@@ -1,4 +1,4 @@
-module rye_badger
+module rye-gio
 
 go 1.23
 

@@ -1,9 +1,6 @@
+rye .needs { gio }
 
-
-
-
-
-do\par gioui {
+do\par gio {
 	
 	go fn\in { } current {
 		

@@ -1,9 +1,9 @@
-# https://github.com/refaktor/rye-gioui
+# https://github.com/refaktor/rye-gio
 
 BIN_ROOT=$(PWD)/.bin
 export PATH:=$(BIN_ROOT):$(PATH)
 
-NAME=rye-gioui
+NAME=rye-gio
 
 all: gen bin
 
