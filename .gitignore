@@ -27,3 +27,6 @@ go.work.sum
 
 # Temporary emacs files
 *~
+
+.DS_Store
+.bin
