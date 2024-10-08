@@ -5,6 +5,7 @@ go 1.23
 toolchain go1.23.2
 
 replace github.com/refaktor/rye => ../rye
+replace github.com/refaktor/ryegen => ../ryegen
 
 require (
 	gioui.org v0.7.1
