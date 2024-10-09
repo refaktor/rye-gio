@@ -28,5 +28,8 @@ go.work.sum
 # Temporary emacs files
 *~
 
+# Ryegen sources
+_srcrepos
+
 .DS_Store
 .bin
