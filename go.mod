@@ -5,13 +5,14 @@ go 1.23
 toolchain go1.23.2
 
 replace github.com/refaktor/rye => ../rye
+
 replace github.com/refaktor/ryegen => ../ryegen
 
 require (
 	gioui.org v0.7.1
 	github.com/go-text/typesetting v0.1.1
-	github.com/refaktor/rye v0.0.24
-	github.com/refaktor/ryegen v0.1.1-0.20241004110956-28a8a8e5f0c5
+	github.com/refaktor/rye v0.0.25-0.20241008135859-3e401118b002
+	github.com/refaktor/ryegen v0.1.1-0.20241009014844-8c047bebf475
 	golang.org/x/image v0.18.0
 )
 
