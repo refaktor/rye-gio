@@ -387,9 +387,9 @@ func ctxTo_font_Face(ps *env.ProgramState, v env.RyeCtx) (font.Face, error) {
 			var res typesetting_font.Face
 			switch v := ps.Res.(type) {
 			case env.Native:
-				var ok bool
-				res, ok = v.Value.(typesetting_font.Face)
-				if !ok {
+				if vc, ok := v.Value.(typesetting_font.Face); ok {
+					res = vc
+				} else {
 					fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 						"context to font.Face: arg 0: callback result: expected native of type typesetting_font.Face",
 						actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
@@ -588,9 +588,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//custom-renderer!: arg 1: expected native of type *app.Config")
 				}
@@ -622,9 +622,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//custom-renderer?: arg 1: expected native of type *app.Config")
 				}
@@ -650,9 +650,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//decorated!: arg 1: expected native of type *app.Config")
 				}
@@ -684,9 +684,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//decorated?: arg 1: expected native of type *app.Config")
 				}
@@ -712,9 +712,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//focused!: arg 1: expected native of type *app.Config")
 				}
@@ -746,9 +746,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//focused?: arg 1: expected native of type *app.Config")
 				}
@@ -774,9 +774,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//max-size!: arg 1: expected native of type *app.Config")
 				}
@@ -793,9 +793,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//max-size!: arg 2: expected native of type image.Point")
 				}
@@ -814,9 +814,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//max-size?: arg 1: expected native of type *app.Config")
 				}
@@ -842,9 +842,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//min-size!: arg 1: expected native of type *app.Config")
 				}
@@ -861,9 +861,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//min-size!: arg 2: expected native of type image.Point")
 				}
@@ -882,9 +882,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//min-size?: arg 1: expected native of type *app.Config")
 				}
@@ -910,9 +910,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//mode!: arg 1: expected native of type *app.Config")
 				}
@@ -958,9 +958,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//mode?: arg 1: expected native of type *app.Config")
 				}
@@ -986,9 +986,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//navigation-color!: arg 1: expected native of type *app.Config")
 				}
@@ -1005,9 +1005,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//navigation-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -1026,9 +1026,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//navigation-color?: arg 1: expected native of type *app.Config")
 				}
@@ -1054,9 +1054,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//orientation!: arg 1: expected native of type *app.Config")
 				}
@@ -1102,9 +1102,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//orientation?: arg 1: expected native of type *app.Config")
 				}
@@ -1130,9 +1130,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//size!: arg 1: expected native of type *app.Config")
 				}
@@ -1149,9 +1149,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//size!: arg 2: expected native of type image.Point")
 				}
@@ -1170,9 +1170,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//size?: arg 1: expected native of type *app.Config")
 				}
@@ -1198,9 +1198,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//status-color!: arg 1: expected native of type *app.Config")
 				}
@@ -1217,9 +1217,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//status-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -1238,9 +1238,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//status-color?: arg 1: expected native of type *app.Config")
 				}
@@ -1266,9 +1266,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//title!: arg 1: expected native of type *app.Config")
 				}
@@ -1300,9 +1300,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Config
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Config)//title?: arg 1: expected native of type *app.Config")
 				}
@@ -1328,9 +1328,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.ConfigEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.ConfigEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.ConfigEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.ConfigEvent)//config!: arg 1: expected native of type *app.ConfigEvent")
 				}
@@ -1347,9 +1347,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *app.Config
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*app.Config)
-				if !ok {
+				if vc, ok := v.Value.(*app.Config); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.ConfigEvent)//config!: arg 2: expected native of type *app.Config")
 				}
@@ -1374,9 +1374,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.ConfigEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.ConfigEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.ConfigEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.ConfigEvent)//config?: arg 1: expected native of type *app.ConfigEvent")
 				}
@@ -1399,26 +1399,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "app.ConfigEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *app.ConfigEvent
+			var arg0Val app.ConfigEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.ConfigEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.ConfigEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.ConfigEvent)//implements-event: arg 1: expected native of type *app.ConfigEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*app.ConfigEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*app.ConfigEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -1429,9 +1423,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.DestroyEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.DestroyEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.DestroyEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.DestroyEvent)//err!: arg 1: expected native of type *app.DestroyEvent")
 				}
@@ -1472,9 +1466,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.DestroyEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.DestroyEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.DestroyEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.DestroyEvent)//err?: arg 1: expected native of type *app.DestroyEvent")
 				}
@@ -1499,26 +1493,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "app.DestroyEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *app.DestroyEvent
+			var arg0Val app.DestroyEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.DestroyEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.DestroyEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.DestroyEvent)//implements-event: arg 1: expected native of type *app.DestroyEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*app.DestroyEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*app.DestroyEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -1529,9 +1517,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//frame!: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1580,9 +1568,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//frame?: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1601,9 +1589,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg0Val *op.Ops
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*op.Ops)
-					if !ok {
+					if vc, ok := v.Value.(*op.Ops); ok {
+						arg0Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("Go(*app.FrameEvent)//frame?: arg 1: expected native of type *op.Ops")
 					}
@@ -1627,26 +1615,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "app.FrameEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *app.FrameEvent
+			var arg0Val app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//implements-event: arg 1: expected native of type *app.FrameEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*app.FrameEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*app.FrameEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -1657,9 +1639,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//insets!: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1676,9 +1658,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *app.Insets
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//insets!: arg 2: expected native of type *app.Insets")
 				}
@@ -1703,9 +1685,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//insets?: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1731,9 +1713,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//metric!: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1750,9 +1732,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *unit.Metric
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//metric!: arg 2: expected native of type *unit.Metric")
 				}
@@ -1777,9 +1759,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//metric?: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1805,9 +1787,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//now!: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1824,9 +1806,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal time.Time
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(time.Time)
-				if !ok {
+				if vc, ok := v.Value.(time.Time); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//now!: arg 2: expected native of type time.Time")
 				}
@@ -1845,9 +1827,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//now?: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1873,9 +1855,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//size!: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1892,9 +1874,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//size!: arg 2: expected native of type image.Point")
 				}
@@ -1913,9 +1895,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//size?: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1941,9 +1923,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//source!: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -1960,9 +1942,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *input.Source
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//source!: arg 2: expected native of type *input.Source")
 				}
@@ -1987,9 +1969,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.FrameEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.FrameEvent)//source?: arg 1: expected native of type *app.FrameEvent")
 				}
@@ -2015,9 +1997,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//bottom!: arg 1: expected native of type *app.Insets")
 				}
@@ -2063,9 +2045,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//bottom?: arg 1: expected native of type *app.Insets")
 				}
@@ -2091,9 +2073,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//left!: arg 1: expected native of type *app.Insets")
 				}
@@ -2139,9 +2121,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//left?: arg 1: expected native of type *app.Insets")
 				}
@@ -2167,9 +2149,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//right!: arg 1: expected native of type *app.Insets")
 				}
@@ -2215,9 +2197,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//right?: arg 1: expected native of type *app.Insets")
 				}
@@ -2243,9 +2225,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//top!: arg 1: expected native of type *app.Insets")
 				}
@@ -2291,9 +2273,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *app.Insets
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*app.Insets)
-				if !ok {
+				if vc, ok := v.Value.(*app.Insets); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Insets)//top?: arg 1: expected native of type *app.Insets")
 				}
@@ -2319,9 +2301,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *app.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.Window)
-				if !ok {
+				if vc, ok := v.Value.(*app.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Window)//event: arg 1: expected native of type *app.Window")
 				}
@@ -2348,9 +2330,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *app.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.Window)
-				if !ok {
+				if vc, ok := v.Value.(*app.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Window)//invalidate: arg 1: expected native of type *app.Window")
 				}
@@ -2375,9 +2357,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *app.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.Window)
-				if !ok {
+				if vc, ok := v.Value.(*app.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Window)//option: arg 1: expected native of type *app.Window")
 				}
@@ -2435,13 +2417,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						}
 					}
 				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]app.Option)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*app.Window)//option: arg 2: expected native of type []app.Option")
-				}
 			case env.Integer:
 				if v.Value != 0 {
 					ps.FailureFlag = true
@@ -2463,9 +2438,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *app.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.Window)
-				if !ok {
+				if vc, ok := v.Value.(*app.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Window)//perform: arg 1: expected native of type *app.Window")
 				}
@@ -2511,9 +2486,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *app.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*app.Window)
-				if !ok {
+				if vc, ok := v.Value.(*app.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*app.Window)//run: arg 1: expected native of type *app.Window")
 				}
@@ -2557,21 +2532,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.Op.Push",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.Op
+			var arg0Val clip.Op
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Op)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Op); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Op)//push: arg 1: expected native of type *clip.Op")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Op)//push: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Op)//push: arg 1: expected native")
@@ -2579,9 +2548,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Op)//push: arg 2: expected native of type *op.Ops")
 				}
@@ -2595,7 +2564,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Op)//push: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Push(arg1Val)
+			res0 := arg0Val.Push(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*clip.Stack)")
 			return res0Obj
@@ -2605,26 +2574,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.Outline.Op",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.Outline
+			var arg0Val clip.Outline
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Outline)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Outline); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Outline)//op: arg 1: expected native of type *clip.Outline")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Outline)//op: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Outline)//op: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Op()
+			res0 := arg0Val.Op()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*clip.Op)")
 			return res0Obj
@@ -2637,9 +2600,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.Outline
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.Outline)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Outline); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Outline)//path!: arg 1: expected native of type *clip.Outline")
 				}
@@ -2656,9 +2619,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *clip.PathSpec
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*clip.PathSpec)
-				if !ok {
+				if vc, ok := v.Value.(*clip.PathSpec); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Outline)//path!: arg 2: expected native of type *clip.PathSpec")
 				}
@@ -2683,9 +2646,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.Outline
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.Outline)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Outline); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Outline)//path?: arg 1: expected native of type *clip.Outline")
 				}
@@ -2711,9 +2674,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//arc: arg 1: expected native of type *clip.Path")
 				}
@@ -2727,40 +2690,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//arc: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//arc: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//arc: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//arc: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc: arg 3: expected native")
@@ -2772,7 +2723,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc: arg 4: expected decimal")
 			}
-			arg0Val.Arc(*arg1Val, *arg2Val, arg3Val)
+			arg0Val.Arc(arg1Val, arg2Val, arg3Val)
 			return arg0
 		},
 	},
@@ -2783,9 +2734,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//arc-to: arg 1: expected native of type *clip.Path")
 				}
@@ -2799,40 +2750,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc-to: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//arc-to: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//arc-to: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc-to: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//arc-to: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//arc-to: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc-to: arg 3: expected native")
@@ -2844,7 +2783,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//arc-to: arg 4: expected decimal")
 			}
-			arg0Val.ArcTo(*arg1Val, *arg2Val, arg3Val)
+			arg0Val.ArcTo(arg1Val, arg2Val, arg3Val)
 			return arg0
 		},
 	},
@@ -2855,9 +2794,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//begin: arg 1: expected native of type *clip.Path")
 				}
@@ -2874,9 +2813,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//begin: arg 2: expected native of type *op.Ops")
 				}
@@ -2901,9 +2840,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//close: arg 1: expected native of type *clip.Path")
 				}
@@ -2928,9 +2867,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube: arg 1: expected native of type *clip.Path")
 				}
@@ -2944,64 +2883,46 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//cube: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//cube: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube: arg 3: expected native")
 			}
-			var arg3Val *f32.Point
+			var arg3Val f32.Point
 			switch v := arg3.(type) {
 			case env.Native:
-				var ok bool
-				arg3Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg3Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube: arg 4: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//cube: arg 4: expected integer to be 0 or nil")
-				}
-				arg3Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube: arg 4: expected native")
 			}
-			arg0Val.Cube(*arg1Val, *arg2Val, *arg3Val)
+			arg0Val.Cube(arg1Val, arg2Val, arg3Val)
 			return arg0
 		},
 	},
@@ -3012,9 +2933,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube-to: arg 1: expected native of type *clip.Path")
 				}
@@ -3028,64 +2949,46 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube-to: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube-to: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//cube-to: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube-to: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube-to: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//cube-to: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube-to: arg 3: expected native")
 			}
-			var arg3Val *f32.Point
+			var arg3Val f32.Point
 			switch v := arg3.(type) {
 			case env.Native:
-				var ok bool
-				arg3Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg3Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//cube-to: arg 4: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//cube-to: arg 4: expected integer to be 0 or nil")
-				}
-				arg3Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//cube-to: arg 4: expected native")
 			}
-			arg0Val.CubeTo(*arg1Val, *arg2Val, *arg3Val)
+			arg0Val.CubeTo(arg1Val, arg2Val, arg3Val)
 			return arg0
 		},
 	},
@@ -3096,9 +2999,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//end: arg 1: expected native of type *clip.Path")
 				}
@@ -3125,9 +3028,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//line: arg 1: expected native of type *clip.Path")
 				}
@@ -3141,26 +3044,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//line: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//line: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//line: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//line: arg 2: expected native")
 			}
-			arg0Val.Line(*arg1Val)
+			arg0Val.Line(arg1Val)
 			return arg0
 		},
 	},
@@ -3171,9 +3068,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//line-to: arg 1: expected native of type *clip.Path")
 				}
@@ -3187,26 +3084,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//line-to: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//line-to: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//line-to: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//line-to: arg 2: expected native")
 			}
-			arg0Val.LineTo(*arg1Val)
+			arg0Val.LineTo(arg1Val)
 			return arg0
 		},
 	},
@@ -3217,9 +3108,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//move: arg 1: expected native of type *clip.Path")
 				}
@@ -3233,26 +3124,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//move: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//move: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//move: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//move: arg 2: expected native")
 			}
-			arg0Val.Move(*arg1Val)
+			arg0Val.Move(arg1Val)
 			return arg0
 		},
 	},
@@ -3263,9 +3148,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//move-to: arg 1: expected native of type *clip.Path")
 				}
@@ -3279,26 +3164,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//move-to: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//move-to: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//move-to: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//move-to: arg 2: expected native")
 			}
-			arg0Val.MoveTo(*arg1Val)
+			arg0Val.MoveTo(arg1Val)
 			return arg0
 		},
 	},
@@ -3309,9 +3188,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//pos: arg 1: expected native of type *clip.Path")
 				}
@@ -3338,9 +3217,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//quad: arg 1: expected native of type *clip.Path")
 				}
@@ -3354,45 +3233,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//quad: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//quad: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//quad: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//quad: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//quad: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//quad: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//quad: arg 3: expected native")
 			}
-			arg0Val.Quad(*arg1Val, *arg2Val)
+			arg0Val.Quad(arg1Val, arg2Val)
 			return arg0
 		},
 	},
@@ -3403,9 +3270,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *clip.Path
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Path)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Path); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//quad-to: arg 1: expected native of type *clip.Path")
 				}
@@ -3419,45 +3286,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//quad-to: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//quad-to: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//quad-to: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//quad-to: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Path)//quad-to: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Path)//quad-to: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Path)//quad-to: arg 3: expected native")
 			}
-			arg0Val.QuadTo(*arg1Val, *arg2Val)
+			arg0Val.QuadTo(arg1Val, arg2Val)
 			return arg0
 		},
 	},
@@ -3468,9 +3323,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//ne!: arg 1: expected native of type *clip.RRect")
 				}
@@ -3502,9 +3357,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//ne?: arg 1: expected native of type *clip.RRect")
 				}
@@ -3530,9 +3385,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//nw!: arg 1: expected native of type *clip.RRect")
 				}
@@ -3564,9 +3419,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//nw?: arg 1: expected native of type *clip.RRect")
 				}
@@ -3589,21 +3444,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.RRect.Op",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.RRect
+			var arg0Val clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//op: arg 1: expected native of type *clip.RRect")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.RRect)//op: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.RRect)//op: arg 1: expected native")
@@ -3611,9 +3460,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//op: arg 2: expected native of type *op.Ops")
 				}
@@ -3627,7 +3476,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.RRect)//op: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Op(arg1Val)
+			res0 := arg0Val.Op(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*clip.Op)")
 			return res0Obj
@@ -3637,21 +3486,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.RRect.Path",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.RRect
+			var arg0Val clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//path: arg 1: expected native of type *clip.RRect")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.RRect)//path: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.RRect)//path: arg 1: expected native")
@@ -3659,9 +3502,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//path: arg 2: expected native of type *op.Ops")
 				}
@@ -3675,7 +3518,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.RRect)//path: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Path(arg1Val)
+			res0 := arg0Val.Path(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*clip.PathSpec)")
 			return res0Obj
@@ -3685,21 +3528,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.RRect.Push",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.RRect
+			var arg0Val clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//push: arg 1: expected native of type *clip.RRect")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.RRect)//push: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.RRect)//push: arg 1: expected native")
@@ -3707,9 +3544,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//push: arg 2: expected native of type *op.Ops")
 				}
@@ -3723,7 +3560,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.RRect)//push: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Push(arg1Val)
+			res0 := arg0Val.Push(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*clip.Stack)")
 			return res0Obj
@@ -3736,9 +3573,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//rect!: arg 1: expected native of type *clip.RRect")
 				}
@@ -3755,9 +3592,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Rectangle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Rectangle)
-				if !ok {
+				if vc, ok := v.Value.(image.Rectangle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//rect!: arg 2: expected native of type image.Rectangle")
 				}
@@ -3776,9 +3613,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//rect?: arg 1: expected native of type *clip.RRect")
 				}
@@ -3804,9 +3641,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//se!: arg 1: expected native of type *clip.RRect")
 				}
@@ -3838,9 +3675,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//se?: arg 1: expected native of type *clip.RRect")
 				}
@@ -3866,9 +3703,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//sw!: arg 1: expected native of type *clip.RRect")
 				}
@@ -3900,9 +3737,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.RRect
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.RRect)
-				if !ok {
+				if vc, ok := v.Value.(*clip.RRect); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.RRect)//sw?: arg 1: expected native of type *clip.RRect")
 				}
@@ -3925,26 +3762,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.Stack.Pop",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.Stack
+			var arg0Val clip.Stack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Stack)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Stack); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stack)//pop: arg 1: expected native of type *clip.Stack")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Stack)//pop: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Stack)//pop: arg 1: expected native")
 			}
-			(*arg0Val).Pop()
+			arg0Val.Pop()
 			return arg0
 		},
 	},
@@ -3952,26 +3783,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clip.Stroke.Op",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clip.Stroke
+			var arg0Val clip.Stroke
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clip.Stroke)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Stroke); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stroke)//op: arg 1: expected native of type *clip.Stroke")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clip.Stroke)//op: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clip.Stroke)//op: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Op()
+			res0 := arg0Val.Op()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*clip.Op)")
 			return res0Obj
@@ -3984,9 +3809,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.Stroke
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.Stroke)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Stroke); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stroke)//path!: arg 1: expected native of type *clip.Stroke")
 				}
@@ -4003,9 +3828,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *clip.PathSpec
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*clip.PathSpec)
-				if !ok {
+				if vc, ok := v.Value.(*clip.PathSpec); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stroke)//path!: arg 2: expected native of type *clip.PathSpec")
 				}
@@ -4030,9 +3855,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.Stroke
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.Stroke)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Stroke); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stroke)//path?: arg 1: expected native of type *clip.Stroke")
 				}
@@ -4058,9 +3883,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.Stroke
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.Stroke)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Stroke); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stroke)//width!: arg 1: expected native of type *clip.Stroke")
 				}
@@ -4092,9 +3917,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clip.Stroke
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clip.Stroke)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Stroke); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clip.Stroke)//width?: arg 1: expected native of type *clip.Stroke")
 				}
@@ -4117,26 +3942,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clipboard.ReadCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clipboard.ReadCmd
+			var arg0Val clipboard.ReadCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clipboard.ReadCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.ReadCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.ReadCmd)//implements-command: arg 1: expected native of type *clipboard.ReadCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clipboard.ReadCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clipboard.ReadCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -4147,9 +3966,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clipboard.ReadCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clipboard.ReadCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.ReadCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.ReadCmd)//tag!: arg 1: expected native of type *clipboard.ReadCmd")
 				}
@@ -4173,9 +3992,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*clipboard.ReadCmd)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.ReadCmd)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -4200,9 +4019,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clipboard.ReadCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clipboard.ReadCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.ReadCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.ReadCmd)//tag?: arg 1: expected native of type *clipboard.ReadCmd")
 				}
@@ -4228,9 +4047,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clipboard.WriteCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clipboard.WriteCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.WriteCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.WriteCmd)//data!: arg 1: expected native of type *clipboard.WriteCmd")
 				}
@@ -4247,9 +4066,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal io.ReadCloser
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(io.ReadCloser)
-				if !ok {
+				if vc, ok := v.Value.(io.ReadCloser); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.WriteCmd)//data!: arg 2: expected native of type io.ReadCloser")
 				}
@@ -4268,9 +4087,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clipboard.WriteCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clipboard.WriteCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.WriteCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.WriteCmd)//data?: arg 1: expected native of type *clipboard.WriteCmd")
 				}
@@ -4293,26 +4112,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "clipboard.WriteCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *clipboard.WriteCmd
+			var arg0Val clipboard.WriteCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*clipboard.WriteCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.WriteCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.WriteCmd)//implements-command: arg 1: expected native of type *clipboard.WriteCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*clipboard.WriteCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*clipboard.WriteCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -4323,9 +4136,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clipboard.WriteCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clipboard.WriteCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.WriteCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.WriteCmd)//type!: arg 1: expected native of type *clipboard.WriteCmd")
 				}
@@ -4357,9 +4170,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *clipboard.WriteCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*clipboard.WriteCmd)
-				if !ok {
+				if vc, ok := v.Value.(*clipboard.WriteCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*clipboard.WriteCmd)//type?: arg 1: expected native of type *clipboard.WriteCmd")
 				}
@@ -4382,26 +4195,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Elems",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//elems: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//elems: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//elems: arg 1: expected native")
 			}
-			res0, res1, res2, res3, res4, res5 := (*arg0Val).Elems()
+			res0, res1, res2, res3, res4, res5 := arg0Val.Elems()
 			var res0Obj env.Object
 			res0Obj = *env.NewDecimal(float64(res0))
 			var res1Obj env.Object
@@ -4428,26 +4235,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Invert",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//invert: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//invert: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//invert: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Invert()
+			res0 := arg0Val.Invert()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Affine2D)")
 			return res0Obj
@@ -4457,45 +4258,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Mul",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//mul: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//mul: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//mul: arg 1: expected native")
 			}
-			var arg1Val *f32.Affine2D
+			var arg1Val f32.Affine2D
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//mul: arg 2: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//mul: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//mul: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Mul(*arg1Val)
+			res0 := arg0Val.Mul(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Affine2D)")
 			return res0Obj
@@ -4505,45 +4294,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Offset",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//offset: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//offset: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//offset: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//offset: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//offset: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//offset: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Offset(*arg1Val)
+			res0 := arg0Val.Offset(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Affine2D)")
 			return res0Obj
@@ -4553,40 +4330,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Rotate",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//rotate: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//rotate: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//rotate: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//rotate: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//rotate: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//rotate: arg 2: expected native")
@@ -4598,7 +4363,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//rotate: arg 3: expected decimal")
 			}
-			res0 := (*arg0Val).Rotate(*arg1Val, arg2Val)
+			res0 := arg0Val.Rotate(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Affine2D)")
 			return res0Obj
@@ -4608,64 +4373,46 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Scale",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//scale: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//scale: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//scale: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//scale: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//scale: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//scale: arg 2: expected native")
 			}
-			var arg2Val *f32.Point
+			var arg2Val f32.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//scale: arg 3: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//scale: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//scale: arg 3: expected native")
 			}
-			res0 := (*arg0Val).Scale(*arg1Val, *arg2Val)
+			res0 := arg0Val.Scale(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Affine2D)")
 			return res0Obj
@@ -4675,40 +4422,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Shear",
 		Argsn: 4,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//shear: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//shear: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//shear: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//shear: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//shear: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//shear: arg 2: expected native")
@@ -4727,7 +4462,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//shear: arg 4: expected decimal")
 			}
-			res0 := (*arg0Val).Shear(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Shear(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Affine2D)")
 			return res0Obj
@@ -4740,9 +4475,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//split: arg 1: expected native of type *f32.Affine2D")
 				}
@@ -4771,26 +4506,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.String",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//string: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//string: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//string: arg 1: expected native")
 			}
-			res0 := (*arg0Val).String()
+			res0 := arg0Val.String()
 			var res0Obj env.Object
 			res0Obj = *env.NewString(res0)
 			return res0Obj
@@ -4800,45 +4529,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Affine2D.Transform",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//transform: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//transform: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//transform: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Affine2D)//transform: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Affine2D)//transform: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Affine2D)//transform: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Transform(*arg1Val)
+			res0 := arg0Val.Transform(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Point)")
 			return res0Obj
@@ -4848,45 +4565,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Point.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Point
+			var arg0Val f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//add: arg 1: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//add: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//add: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//add: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//add: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Add(*arg1Val)
+			res0 := arg0Val.Add(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Point)")
 			return res0Obj
@@ -4896,21 +4601,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Point.Div",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Point
+			var arg0Val f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//div: arg 1: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//div: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//div: arg 1: expected native")
@@ -4922,7 +4621,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//div: arg 2: expected decimal")
 			}
-			res0 := (*arg0Val).Div(arg1Val)
+			res0 := arg0Val.Div(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Point)")
 			return res0Obj
@@ -4932,21 +4631,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Point.Mul",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Point
+			var arg0Val f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//mul: arg 1: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//mul: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//mul: arg 1: expected native")
@@ -4958,7 +4651,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//mul: arg 2: expected decimal")
 			}
-			res0 := (*arg0Val).Mul(arg1Val)
+			res0 := arg0Val.Mul(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Point)")
 			return res0Obj
@@ -4968,26 +4661,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Point.Round",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Point
+			var arg0Val f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//round: arg 1: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//round: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//round: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Round()
+			res0 := arg0Val.Round()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(image.Point)")
 			return res0Obj
@@ -4997,26 +4684,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Point.String",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Point
+			var arg0Val f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//string: arg 1: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//string: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//string: arg 1: expected native")
 			}
-			res0 := (*arg0Val).String()
+			res0 := arg0Val.String()
 			var res0Obj env.Object
 			res0Obj = *env.NewString(res0)
 			return res0Obj
@@ -5026,45 +4707,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "f32.Point.Sub",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Point
+			var arg0Val f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//sub: arg 1: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//sub: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//sub: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//sub: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*f32.Point)//sub: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*f32.Point)//sub: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Sub(*arg1Val)
+			res0 := arg0Val.Sub(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Point)")
 			return res0Obj
@@ -5077,9 +4746,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//x!: arg 1: expected native of type *f32.Point")
 				}
@@ -5111,9 +4780,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//x?: arg 1: expected native of type *f32.Point")
 				}
@@ -5139,9 +4808,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//y!: arg 1: expected native of type *f32.Point")
 				}
@@ -5173,9 +4842,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *f32.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*f32.Point)//y?: arg 1: expected native of type *f32.Point")
 				}
@@ -5201,9 +4870,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.Font)//style!: arg 1: expected native of type *font.Font")
 				}
@@ -5249,9 +4918,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.Font)//style?: arg 1: expected native of type *font.Font")
 				}
@@ -5277,9 +4946,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.Font)//typeface!: arg 1: expected native of type *font.Font")
 				}
@@ -5325,9 +4994,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.Font)//typeface?: arg 1: expected native of type *font.Font")
 				}
@@ -5353,9 +5022,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.Font)//weight!: arg 1: expected native of type *font.Font")
 				}
@@ -5401,9 +5070,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.Font)//weight?: arg 1: expected native of type *font.Font")
 				}
@@ -5429,9 +5098,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.FontFace
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.FontFace)
-				if !ok {
+				if vc, ok := v.Value.(*font.FontFace); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.FontFace)//face!: arg 1: expected native of type *font.FontFace")
 				}
@@ -5455,9 +5124,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*font.FontFace)//face!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(font.Face)
-				if !ok {
+				if vc, ok := v.Value.(font.Face); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.FontFace)//face!: arg 2: expected native of type font.Face")
 				}
@@ -5482,9 +5151,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.FontFace
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.FontFace)
-				if !ok {
+				if vc, ok := v.Value.(*font.FontFace); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.FontFace)//face?: arg 1: expected native of type *font.FontFace")
 				}
@@ -5510,9 +5179,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.FontFace
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.FontFace)
-				if !ok {
+				if vc, ok := v.Value.(*font.FontFace); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.FontFace)//font!: arg 1: expected native of type *font.FontFace")
 				}
@@ -5529,9 +5198,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *font.Font
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.FontFace)//font!: arg 2: expected native of type *font.Font")
 				}
@@ -5556,9 +5225,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *font.FontFace
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*font.FontFace)
-				if !ok {
+				if vc, ok := v.Value.(*font.FontFace); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*font.FontFace)//font?: arg 1: expected native of type *font.FontFace")
 				}
@@ -5584,9 +5253,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Click)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Click); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Click)//add: arg 1: expected native of type *gesture.Click")
 				}
@@ -5603,9 +5272,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Click)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -5630,9 +5299,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Click)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Click); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Click)//hovered: arg 1: expected native of type *gesture.Click")
 				}
@@ -5659,9 +5328,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Click)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Click); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Click)//pressed: arg 1: expected native of type *gesture.Click")
 				}
@@ -5688,9 +5357,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Click)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Click); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Click)//update: arg 1: expected native of type *gesture.Click")
 				}
@@ -5704,26 +5373,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Click)//update: arg 1: expected native")
 			}
-			var arg1Val *input.Source
+			var arg1Val input.Source
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Click)//update: arg 2: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*gesture.Click)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Click)//update: arg 2: expected native")
 			}
-			res0, res1 := arg0Val.Update(*arg1Val)
+			res0, res1 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*gesture.ClickEvent)")
 			var res1Obj env.Object
@@ -5738,26 +5401,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "gesture.ClickEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *gesture.ClickEvent
+			var arg0Val gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//implements-event: arg 1: expected native of type *gesture.ClickEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*gesture.ClickEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.ClickEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -5768,9 +5425,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//kind!: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -5816,9 +5473,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//kind?: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -5844,9 +5501,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//modifiers!: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -5892,9 +5549,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//modifiers?: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -5920,9 +5577,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//num-clicks!: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -5954,9 +5611,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//num-clicks?: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -5982,9 +5639,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//position!: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -6001,9 +5658,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//position!: arg 2: expected native of type image.Point")
 				}
@@ -6022,9 +5679,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//position?: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -6050,9 +5707,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//source!: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -6098,9 +5755,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *gesture.ClickEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*gesture.ClickEvent)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.ClickEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.ClickEvent)//source?: arg 1: expected native of type *gesture.ClickEvent")
 				}
@@ -6126,9 +5783,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Drag
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Drag)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Drag); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//add: arg 1: expected native of type *gesture.Drag")
 				}
@@ -6145,9 +5802,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -6172,9 +5829,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Drag
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Drag)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Drag); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//dragging: arg 1: expected native of type *gesture.Drag")
 				}
@@ -6201,9 +5858,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Drag
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Drag)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Drag); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//pressed: arg 1: expected native of type *gesture.Drag")
 				}
@@ -6230,9 +5887,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Drag
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Drag)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Drag); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//update: arg 1: expected native of type *gesture.Drag")
 				}
@@ -6246,40 +5903,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Drag)//update: arg 1: expected native")
 			}
-			var arg1Val *unit.Metric
+			var arg1Val unit.Metric
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//update: arg 2: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*gesture.Drag)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Drag)//update: arg 2: expected native")
 			}
-			var arg2Val *input.Source
+			var arg2Val input.Source
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Drag)//update: arg 3: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*gesture.Drag)//update: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Drag)//update: arg 3: expected native")
@@ -6305,7 +5950,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = gesture.Axis(u)
 				}
 			}
-			res0, res1 := arg0Val.Update(*arg1Val, *arg2Val, arg3Val)
+			res0, res1 := arg0Val.Update(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*pointer.Event)")
 			var res1Obj env.Object
@@ -6323,9 +5968,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Hover
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Hover)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Hover); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Hover)//add: arg 1: expected native of type *gesture.Hover")
 				}
@@ -6342,9 +5987,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Hover)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -6369,9 +6014,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Hover
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Hover)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Hover); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Hover)//update: arg 1: expected native of type *gesture.Hover")
 				}
@@ -6385,26 +6030,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Hover)//update: arg 1: expected native")
 			}
-			var arg1Val *input.Source
+			var arg1Val input.Source
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Hover)//update: arg 2: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*gesture.Hover)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*gesture.Hover)//update: arg 2: expected native")
 			}
-			res0 := arg0Val.Update(*arg1Val)
+			res0 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -6417,9 +6056,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Scroll
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Scroll)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Scroll); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Scroll)//add: arg 1: expected native of type *gesture.Scroll")
 				}
@@ -6436,9 +6075,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Scroll)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -6463,9 +6102,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Scroll
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Scroll)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Scroll); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Scroll)//state: arg 1: expected native of type *gesture.Scroll")
 				}
@@ -6492,9 +6131,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *gesture.Scroll
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*gesture.Scroll)
-				if !ok {
+				if vc, ok := v.Value.(*gesture.Scroll); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*gesture.Scroll)//stop: arg 1: expected native of type *gesture.Scroll")
 				}
@@ -6519,9 +6158,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *headless.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*headless.Window)
-				if !ok {
+				if vc, ok := v.Value.(*headless.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*headless.Window)//frame: arg 1: expected native of type *headless.Window")
 				}
@@ -6538,9 +6177,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*headless.Window)//frame: arg 2: expected native of type *op.Ops")
 				}
@@ -6573,9 +6212,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *headless.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*headless.Window)
-				if !ok {
+				if vc, ok := v.Value.(*headless.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*headless.Window)//release: arg 1: expected native of type *headless.Window")
 				}
@@ -6600,9 +6239,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *headless.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*headless.Window)
-				if !ok {
+				if vc, ok := v.Value.(*headless.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*headless.Window)//screenshot: arg 1: expected native of type *headless.Window")
 				}
@@ -6619,9 +6258,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *image.RGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*image.RGBA)
-				if !ok {
+				if vc, ok := v.Value.(*image.RGBA); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*headless.Window)//screenshot: arg 2: expected native of type *image.RGBA")
 				}
@@ -6654,9 +6293,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *headless.Window
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*headless.Window)
-				if !ok {
+				if vc, ok := v.Value.(*headless.Window); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*headless.Window)//size: arg 1: expected native of type *headless.Window")
 				}
@@ -6683,9 +6322,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.EditorState
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.EditorState)
-				if !ok {
+				if vc, ok := v.Value.(*input.EditorState); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.EditorState)//selection!: arg 1: expected native of type *input.EditorState")
 				}
@@ -6706,13 +6345,13 @@ var builtinsGenerated = map[string]*env.Builtin{
 			}
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(struct {
+				if vc, ok := v.Value.(struct {
 					Transform f32.Affine2D
 					key.Range
 					key.Caret
-				})
-				if !ok {
+				}); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.EditorState)//selection!: arg 2: expected native of type struct{Transform f32.Affine2D; key.Range; key.Caret}")
 				}
@@ -6731,9 +6370,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.EditorState
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.EditorState)
-				if !ok {
+				if vc, ok := v.Value.(*input.EditorState); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.EditorState)//selection?: arg 1: expected native of type *input.EditorState")
 				}
@@ -6759,9 +6398,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.EditorState
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.EditorState)
-				if !ok {
+				if vc, ok := v.Value.(*input.EditorState); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.EditorState)//snippet!: arg 1: expected native of type *input.EditorState")
 				}
@@ -6778,9 +6417,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Snippet
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.EditorState)//snippet!: arg 2: expected native of type *key.Snippet")
 				}
@@ -6805,9 +6444,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.EditorState
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.EditorState)
-				if !ok {
+				if vc, ok := v.Value.(*input.EditorState); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.EditorState)//snippet?: arg 1: expected native of type *input.EditorState")
 				}
@@ -6833,9 +6472,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//action-at: arg 1: expected native of type *input.Router")
 				}
@@ -6849,26 +6488,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Router)//action-at: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//action-at: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Router)//action-at: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Router)//action-at: arg 2: expected native")
 			}
-			res0, res1 := arg0Val.ActionAt(*arg1Val)
+			res0, res1 := arg0Val.ActionAt(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(uint(res0)))
 			var res1Obj env.Object
@@ -6886,9 +6519,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//append-semantics: arg 1: expected native of type *input.Router")
 				}
@@ -6909,23 +6542,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(input.SemanticNode)
-						if !ok {
+						if vc, ok := v.Value.(*input.SemanticNode); ok {
+							arg1Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*input.Router)//append-semantics: arg 2: block item: expected native of type input.SemanticNode")
+							return env.NewError("Go(*input.Router)//append-semantics: arg 2: block item: expected native of type *input.SemanticNode")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*input.Router)//append-semantics: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]input.SemanticNode)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Router)//append-semantics: arg 2: expected native of type []input.SemanticNode")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -6942,7 +6568,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(input.SemanticNode)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*input.SemanticNode)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -6956,9 +6582,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//click-focus: arg 1: expected native of type *input.Router")
 				}
@@ -6983,9 +6609,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//clipboard-requested: arg 1: expected native of type *input.Router")
 				}
@@ -7012,9 +6638,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//cursor: arg 1: expected native of type *input.Router")
 				}
@@ -7041,9 +6667,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//editor-state: arg 1: expected native of type *input.Router")
 				}
@@ -7070,9 +6696,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//event: arg 1: expected native of type *input.Router")
 				}
@@ -7100,9 +6726,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 							return env.NewError("Go(*input.Router)//event: arg 2: block item: " + err.Error() + "")
 						}
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(event.Filter)
-						if !ok {
+						if vc, ok := v.Value.(event.Filter); ok {
+							arg1Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*input.Router)//event: arg 2: block item: expected native of type event.Filter")
 						}
@@ -7116,13 +6742,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						ps.FailureFlag = true
 						return env.NewError("Go(*input.Router)//event: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]event.Filter)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Router)//event: arg 2: expected native of type []event.Filter")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -7152,9 +6771,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//frame: arg 1: expected native of type *input.Router")
 				}
@@ -7171,9 +6790,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//frame: arg 2: expected native of type *op.Ops")
 				}
@@ -7198,9 +6817,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//move-focus: arg 1: expected native of type *input.Router")
 				}
@@ -7246,9 +6865,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//queue: arg 1: expected native of type *input.Router")
 				}
@@ -7276,9 +6895,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 							return env.NewError("Go(*input.Router)//queue: arg 2: block item: " + err.Error() + "")
 						}
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(event.Event)
-						if !ok {
+						if vc, ok := v.Value.(event.Event); ok {
+							arg1Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*input.Router)//queue: arg 2: block item: expected native of type event.Event")
 						}
@@ -7292,13 +6911,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						ps.FailureFlag = true
 						return env.NewError("Go(*input.Router)//queue: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]event.Event)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Router)//queue: arg 2: expected native of type []event.Event")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -7321,9 +6933,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//reveal-focus: arg 1: expected native of type *input.Router")
 				}
@@ -7340,9 +6952,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Rectangle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Rectangle)
-				if !ok {
+				if vc, ok := v.Value.(image.Rectangle); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//reveal-focus: arg 2: expected native of type image.Rectangle")
 				}
@@ -7361,9 +6973,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//scroll-focus: arg 1: expected native of type *input.Router")
 				}
@@ -7380,9 +6992,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//scroll-focus: arg 2: expected native of type image.Point")
 				}
@@ -7401,9 +7013,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//semantic-at: arg 1: expected native of type *input.Router")
 				}
@@ -7417,26 +7029,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Router)//semantic-at: arg 1: expected native")
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//semantic-at: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Router)//semantic-at: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Router)//semantic-at: arg 2: expected native")
 			}
-			res0, res1 := arg0Val.SemanticAt(*arg1Val)
+			res0, res1 := arg0Val.SemanticAt(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(uint(res0)))
 			var res1Obj env.Object
@@ -7454,9 +7060,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//source: arg 1: expected native of type *input.Router")
 				}
@@ -7483,9 +7089,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//text-input-hint: arg 1: expected native of type *input.Router")
 				}
@@ -7517,9 +7123,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//text-input-state: arg 1: expected native of type *input.Router")
 				}
@@ -7546,9 +7152,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//wakeup-time: arg 1: expected native of type *input.Router")
 				}
@@ -7580,9 +7186,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *input.Router
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Router)
-				if !ok {
+				if vc, ok := v.Value.(*input.Router); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Router)//write-clipboard: arg 1: expected native of type *input.Router")
 				}
@@ -7623,9 +7229,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//bounds!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7642,9 +7248,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Rectangle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Rectangle)
-				if !ok {
+				if vc, ok := v.Value.(image.Rectangle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//bounds!: arg 2: expected native of type image.Rectangle")
 				}
@@ -7663,9 +7269,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//bounds?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7691,9 +7297,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//class!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7739,9 +7345,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//class?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7767,9 +7373,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//description!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7801,9 +7407,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//description?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7829,9 +7435,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//disabled!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7863,9 +7469,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//disabled?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7891,9 +7497,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//gestures!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7939,9 +7545,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//gestures?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -7967,9 +7573,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//label!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -8001,9 +7607,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//label?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -8029,9 +7635,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//selected!: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -8063,9 +7669,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticDesc
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticDesc)//selected?: arg 1: expected native of type *input.SemanticDesc")
 				}
@@ -8091,9 +7697,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//children!: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8114,23 +7720,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						newVal[i], ok = v.Value.(input.SemanticNode)
-						if !ok {
+						if vc, ok := v.Value.(*input.SemanticNode); ok {
+							newVal[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*input.SemanticNode)//children!: arg 2: block item: expected native of type input.SemanticNode")
+							return env.NewError("Go(*input.SemanticNode)//children!: arg 2: block item: expected native of type *input.SemanticNode")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*input.SemanticNode)//children!: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.([]input.SemanticNode)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.SemanticNode)//children!: arg 2: expected native of type []input.SemanticNode")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -8153,9 +7752,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//children?: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8173,7 +7772,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(self.Children))
 				for i, it := range self.Children {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(input.SemanticNode)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*input.SemanticNode)")
 				}
 				resObj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -8187,9 +7786,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//desc!: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8206,9 +7805,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *input.SemanticDesc
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*input.SemanticDesc)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticDesc); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//desc!: arg 2: expected native of type *input.SemanticDesc")
 				}
@@ -8233,9 +7832,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//desc?: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8261,9 +7860,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//id!: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8309,9 +7908,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//id?: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8337,9 +7936,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//parent-id!: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8385,9 +7984,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SemanticNode
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SemanticNode)
-				if !ok {
+				if vc, ok := v.Value.(*input.SemanticNode); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SemanticNode)//parent-id?: arg 1: expected native of type *input.SemanticNode")
 				}
@@ -8410,26 +8009,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "input.Source.Enabled",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *input.Source
+			var arg0Val input.Source
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Source)//enabled: arg 1: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Source)//enabled: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//enabled: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Enabled()
+			res0 := arg0Val.Enabled()
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -8439,21 +8032,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "input.Source.Event",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *input.Source
+			var arg0Val input.Source
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Source)//event: arg 1: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Source)//event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//event: arg 1: expected native")
@@ -8472,9 +8059,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 							return env.NewError("Go(*input.Source)//event: arg 2: block item: " + err.Error() + "")
 						}
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(event.Filter)
-						if !ok {
+						if vc, ok := v.Value.(event.Filter); ok {
+							arg1Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*input.Source)//event: arg 2: block item: expected native of type event.Filter")
 						}
@@ -8489,13 +8076,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						return env.NewError("Go(*input.Source)//event: arg 2: block item: expected native")
 					}
 				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]event.Filter)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Source)//event: arg 2: expected native of type []event.Filter")
-				}
 			case env.Integer:
 				if v.Value != 0 {
 					ps.FailureFlag = true
@@ -8506,7 +8086,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//event: arg 2: expected block, native or nil")
 			}
-			res0, res1 := (*arg0Val).Event(arg1Val...)
+			res0, res1 := arg0Val.Event(arg1Val...)
 			var res0Obj env.Object
 			res0Obj = ifaceToNative(ps.Idx, res0, "Go(event.Event)")
 			var res1Obj env.Object
@@ -8521,21 +8101,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "input.Source.Execute",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *input.Source
+			var arg0Val input.Source
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Source)//execute: arg 1: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Source)//execute: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//execute: arg 1: expected native")
@@ -8550,9 +8124,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*input.Source)//execute: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(input.Command)
-				if !ok {
+				if vc, ok := v.Value.(input.Command); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Source)//execute: arg 2: expected native of type input.Command")
 				}
@@ -8566,7 +8140,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//execute: arg 2: expected native")
 			}
-			(*arg0Val).Execute(arg1Val)
+			arg0Val.Execute(arg1Val)
 			return arg0
 		},
 	},
@@ -8574,21 +8148,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "input.Source.Focused",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *input.Source
+			var arg0Val input.Source
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Source)//focused: arg 1: expected native of type *input.Source")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.Source)//focused: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//focused: arg 1: expected native")
@@ -8603,9 +8171,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*input.Source)//focused: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.Source)//focused: arg 2: expected native of type event.Tag")
 				}
@@ -8619,7 +8187,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.Source)//focused: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Focused(arg1Val)
+			res0 := arg0Val.Focused(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -8632,9 +8200,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SystemEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SystemEvent)
-				if !ok {
+				if vc, ok := v.Value.(*input.SystemEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SystemEvent)//event!: arg 1: expected native of type *input.SystemEvent")
 				}
@@ -8658,9 +8226,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*input.SystemEvent)//event!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Event)
-				if !ok {
+				if vc, ok := v.Value.(event.Event); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SystemEvent)//event!: arg 2: expected native of type event.Event")
 				}
@@ -8685,9 +8253,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *input.SystemEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*input.SystemEvent)
-				if !ok {
+				if vc, ok := v.Value.(*input.SystemEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SystemEvent)//event?: arg 1: expected native of type *input.SystemEvent")
 				}
@@ -8710,26 +8278,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "input.SystemEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *input.SystemEvent
+			var arg0Val input.SystemEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*input.SystemEvent)
-				if !ok {
+				if vc, ok := v.Value.(*input.SystemEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*input.SystemEvent)//implements-event: arg 1: expected native of type *input.SystemEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*input.SystemEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*input.SystemEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -8740,9 +8302,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Caret
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//ascent!: arg 1: expected native of type *key.Caret")
 				}
@@ -8774,9 +8336,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Caret
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//ascent?: arg 1: expected native of type *key.Caret")
 				}
@@ -8802,9 +8364,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Caret
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//descent!: arg 1: expected native of type *key.Caret")
 				}
@@ -8836,9 +8398,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Caret
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//descent?: arg 1: expected native of type *key.Caret")
 				}
@@ -8864,9 +8426,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Caret
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//pos!: arg 1: expected native of type *key.Caret")
 				}
@@ -8883,9 +8445,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//pos!: arg 2: expected native of type *f32.Point")
 				}
@@ -8910,9 +8472,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Caret
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Caret)//pos?: arg 1: expected native of type *key.Caret")
 				}
@@ -8935,26 +8497,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.EditEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.EditEvent
+			var arg0Val key.EditEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.EditEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.EditEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.EditEvent)//implements-event: arg 1: expected native of type *key.EditEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.EditEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.EditEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -8965,9 +8521,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.EditEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.EditEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.EditEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.EditEvent)//range!: arg 1: expected native of type *key.EditEvent")
 				}
@@ -8984,9 +8540,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Range
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.EditEvent)//range!: arg 2: expected native of type *key.Range")
 				}
@@ -9011,9 +8567,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.EditEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.EditEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.EditEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.EditEvent)//range?: arg 1: expected native of type *key.EditEvent")
 				}
@@ -9039,9 +8595,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.EditEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.EditEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.EditEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.EditEvent)//text!: arg 1: expected native of type *key.EditEvent")
 				}
@@ -9073,9 +8629,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.EditEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.EditEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.EditEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.EditEvent)//text?: arg 1: expected native of type *key.EditEvent")
 				}
@@ -9098,26 +8654,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.Event.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.Event
+			var arg0Val key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//implements-event: arg 1: expected native of type *key.Event")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.Event)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.Event)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -9128,9 +8678,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//modifiers!: arg 1: expected native of type *key.Event")
 				}
@@ -9176,9 +8726,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//modifiers?: arg 1: expected native of type *key.Event")
 				}
@@ -9204,9 +8754,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//name!: arg 1: expected native of type *key.Event")
 				}
@@ -9252,9 +8802,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//name?: arg 1: expected native of type *key.Event")
 				}
@@ -9280,9 +8830,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//state!: arg 1: expected native of type *key.Event")
 				}
@@ -9328,9 +8878,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Event)
-				if !ok {
+				if vc, ok := v.Value.(*key.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Event)//state?: arg 1: expected native of type *key.Event")
 				}
@@ -9356,9 +8906,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//focus!: arg 1: expected native of type *key.Filter")
 				}
@@ -9382,9 +8932,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*key.Filter)//focus!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//focus!: arg 2: expected native of type event.Tag")
 				}
@@ -9409,9 +8959,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//focus?: arg 1: expected native of type *key.Filter")
 				}
@@ -9434,26 +8984,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.Filter.ImplementsFilter",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.Filter
+			var arg0Val key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//implements-filter: arg 1: expected native of type *key.Filter")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.Filter)//implements-filter: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.Filter)//implements-filter: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsFilter()
+			arg0Val.ImplementsFilter()
 			return arg0
 		},
 	},
@@ -9464,9 +9008,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//name!: arg 1: expected native of type *key.Filter")
 				}
@@ -9512,9 +9056,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//name?: arg 1: expected native of type *key.Filter")
 				}
@@ -9540,9 +9084,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//optional!: arg 1: expected native of type *key.Filter")
 				}
@@ -9588,9 +9132,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//optional?: arg 1: expected native of type *key.Filter")
 				}
@@ -9616,9 +9160,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//required!: arg 1: expected native of type *key.Filter")
 				}
@@ -9664,9 +9208,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*key.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Filter)//required?: arg 1: expected native of type *key.Filter")
 				}
@@ -9689,26 +9233,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.FocusCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.FocusCmd
+			var arg0Val key.FocusCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.FocusCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusCmd)//implements-command: arg 1: expected native of type *key.FocusCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.FocusCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.FocusCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -9719,9 +9257,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.FocusCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.FocusCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusCmd)//tag!: arg 1: expected native of type *key.FocusCmd")
 				}
@@ -9745,9 +9283,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*key.FocusCmd)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusCmd)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -9772,9 +9310,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.FocusCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.FocusCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusCmd)//tag?: arg 1: expected native of type *key.FocusCmd")
 				}
@@ -9800,9 +9338,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.FocusEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.FocusEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusEvent)//focus!: arg 1: expected native of type *key.FocusEvent")
 				}
@@ -9834,9 +9372,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.FocusEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.FocusEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusEvent)//focus?: arg 1: expected native of type *key.FocusEvent")
 				}
@@ -9859,26 +9397,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.FocusEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.FocusEvent
+			var arg0Val key.FocusEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.FocusEvent)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusEvent)//implements-event: arg 1: expected native of type *key.FocusEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.FocusEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.FocusEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -9886,26 +9418,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.FocusFilter.ImplementsFilter",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.FocusFilter
+			var arg0Val key.FocusFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.FocusFilter)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusFilter); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusFilter)//implements-filter: arg 1: expected native of type *key.FocusFilter")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.FocusFilter)//implements-filter: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.FocusFilter)//implements-filter: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsFilter()
+			arg0Val.ImplementsFilter()
 			return arg0
 		},
 	},
@@ -9916,9 +9442,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.FocusFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.FocusFilter)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusFilter)//target!: arg 1: expected native of type *key.FocusFilter")
 				}
@@ -9942,9 +9468,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*key.FocusFilter)//target!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusFilter)//target!: arg 2: expected native of type event.Tag")
 				}
@@ -9969,9 +9495,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.FocusFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.FocusFilter)
-				if !ok {
+				if vc, ok := v.Value.(*key.FocusFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.FocusFilter)//target?: arg 1: expected native of type *key.FocusFilter")
 				}
@@ -9994,21 +9520,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.InputHintOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.InputHintOp
+			var arg0Val key.InputHintOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.InputHintOp)
-				if !ok {
+				if vc, ok := v.Value.(*key.InputHintOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//add: arg 1: expected native of type *key.InputHintOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.InputHintOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.InputHintOp)//add: arg 1: expected native")
@@ -10016,9 +9536,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -10032,7 +9552,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.InputHintOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -10043,9 +9563,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.InputHintOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.InputHintOp)
-				if !ok {
+				if vc, ok := v.Value.(*key.InputHintOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//hint!: arg 1: expected native of type *key.InputHintOp")
 				}
@@ -10091,9 +9611,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.InputHintOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.InputHintOp)
-				if !ok {
+				if vc, ok := v.Value.(*key.InputHintOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//hint?: arg 1: expected native of type *key.InputHintOp")
 				}
@@ -10119,9 +9639,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.InputHintOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.InputHintOp)
-				if !ok {
+				if vc, ok := v.Value.(*key.InputHintOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//tag!: arg 1: expected native of type *key.InputHintOp")
 				}
@@ -10145,9 +9665,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*key.InputHintOp)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -10172,9 +9692,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.InputHintOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.InputHintOp)
-				if !ok {
+				if vc, ok := v.Value.(*key.InputHintOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.InputHintOp)//tag?: arg 1: expected native of type *key.InputHintOp")
 				}
@@ -10200,9 +9720,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Range)//end!: arg 1: expected native of type *key.Range")
 				}
@@ -10234,9 +9754,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Range)//end?: arg 1: expected native of type *key.Range")
 				}
@@ -10262,9 +9782,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Range)//start!: arg 1: expected native of type *key.Range")
 				}
@@ -10296,9 +9816,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Range)//start?: arg 1: expected native of type *key.Range")
 				}
@@ -10324,9 +9844,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//ascent!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10358,9 +9878,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//ascent?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10386,9 +9906,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//caret!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10405,9 +9925,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Caret
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Caret)
-				if !ok {
+				if vc, ok := v.Value.(*key.Caret); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//caret!: arg 2: expected native of type *key.Caret")
 				}
@@ -10432,9 +9952,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//caret?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10460,9 +9980,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//descent!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10494,9 +10014,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//descent?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10522,9 +10042,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//end!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10556,9 +10076,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//end?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10581,26 +10101,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.SelectionCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.SelectionCmd
+			var arg0Val key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//implements-command: arg 1: expected native of type *key.SelectionCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.SelectionCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.SelectionCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -10611,9 +10125,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//pos!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10630,9 +10144,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//pos!: arg 2: expected native of type *f32.Point")
 				}
@@ -10657,9 +10171,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//pos?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10685,9 +10199,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//range!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10704,9 +10218,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Range
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//range!: arg 2: expected native of type *key.Range")
 				}
@@ -10731,9 +10245,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//range?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10759,9 +10273,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//start!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10793,9 +10307,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//start?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10821,9 +10335,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//tag!: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10847,9 +10361,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*key.SelectionCmd)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -10874,9 +10388,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SelectionCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SelectionCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SelectionCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SelectionCmd)//tag?: arg 1: expected native of type *key.SelectionCmd")
 				}
@@ -10902,9 +10416,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//end!: arg 1: expected native of type *key.Snippet")
 				}
@@ -10936,9 +10450,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//end?: arg 1: expected native of type *key.Snippet")
 				}
@@ -10964,9 +10478,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//range!: arg 1: expected native of type *key.Snippet")
 				}
@@ -10983,9 +10497,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Range
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//range!: arg 2: expected native of type *key.Range")
 				}
@@ -11010,9 +10524,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//range?: arg 1: expected native of type *key.Snippet")
 				}
@@ -11038,9 +10552,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//start!: arg 1: expected native of type *key.Snippet")
 				}
@@ -11072,9 +10586,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//start?: arg 1: expected native of type *key.Snippet")
 				}
@@ -11100,9 +10614,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//text!: arg 1: expected native of type *key.Snippet")
 				}
@@ -11134,9 +10648,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.Snippet
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.Snippet)//text?: arg 1: expected native of type *key.Snippet")
 				}
@@ -11162,9 +10676,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//end!: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11196,9 +10710,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//end?: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11221,26 +10735,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.SnippetCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.SnippetCmd
+			var arg0Val key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//implements-command: arg 1: expected native of type *key.SnippetCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.SnippetCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.SnippetCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -11251,9 +10759,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//range!: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11270,9 +10778,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Range
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Range)
-				if !ok {
+				if vc, ok := v.Value.(*key.Range); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//range!: arg 2: expected native of type *key.Range")
 				}
@@ -11297,9 +10805,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//range?: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11325,9 +10833,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//snippet!: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11344,9 +10852,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *key.Snippet
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*key.Snippet)
-				if !ok {
+				if vc, ok := v.Value.(*key.Snippet); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//snippet!: arg 2: expected native of type *key.Snippet")
 				}
@@ -11371,9 +10879,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//snippet?: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11399,9 +10907,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//start!: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11433,9 +10941,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//start?: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11461,9 +10969,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//tag!: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11487,9 +10995,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*key.SnippetCmd)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -11514,9 +11022,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//tag?: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11542,9 +11050,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//text!: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11576,9 +11084,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SnippetCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SnippetCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SnippetCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SnippetCmd)//text?: arg 1: expected native of type *key.SnippetCmd")
 				}
@@ -11601,26 +11109,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "key.SoftKeyboardCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *key.SoftKeyboardCmd
+			var arg0Val key.SoftKeyboardCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*key.SoftKeyboardCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SoftKeyboardCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SoftKeyboardCmd)//implements-command: arg 1: expected native of type *key.SoftKeyboardCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*key.SoftKeyboardCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*key.SoftKeyboardCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -11631,9 +11133,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SoftKeyboardCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SoftKeyboardCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SoftKeyboardCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SoftKeyboardCmd)//show!: arg 1: expected native of type *key.SoftKeyboardCmd")
 				}
@@ -11665,9 +11167,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *key.SoftKeyboardCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*key.SoftKeyboardCmd)
-				if !ok {
+				if vc, ok := v.Value.(*key.SoftKeyboardCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*key.SoftKeyboardCmd)//show?: arg 1: expected native of type *key.SoftKeyboardCmd")
 				}
@@ -11690,40 +11192,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Background.Layout",
 		Argsn: 4,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Background
+			var arg0Val layout.Background
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Background)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Background); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Background)//layout: arg 1: expected native of type *layout.Background")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Background)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Background)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Background)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Background)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Background)//layout: arg 2: expected native")
@@ -11755,11 +11245,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*layout.Background)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*layout.Background)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -11815,11 +11305,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*layout.Background)//layout: arg 4: callback result: expected native of type layout.Dimensions",
+										"Go(*layout.Background)//layout: arg 4: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -11848,7 +11338,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = layout.Widget(u)
 				}
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -11858,21 +11348,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Constraints.AddMin",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Constraints
+			var arg0Val layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//add-min: arg 1: expected native of type *layout.Constraints")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Constraints)//add-min: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Constraints)//add-min: arg 1: expected native")
@@ -11880,9 +11364,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//add-min: arg 2: expected native of type image.Point")
 				}
@@ -11890,7 +11374,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Constraints)//add-min: arg 2: expected native")
 			}
-			res0 := (*arg0Val).AddMin(arg1Val)
+			res0 := arg0Val.AddMin(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Constraints)")
 			return res0Obj
@@ -11900,21 +11384,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Constraints.Constrain",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Constraints
+			var arg0Val layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//constrain: arg 1: expected native of type *layout.Constraints")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Constraints)//constrain: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Constraints)//constrain: arg 1: expected native")
@@ -11922,9 +11400,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//constrain: arg 2: expected native of type image.Point")
 				}
@@ -11932,7 +11410,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Constraints)//constrain: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Constrain(arg1Val)
+			res0 := arg0Val.Constrain(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(image.Point)")
 			return res0Obj
@@ -11945,9 +11423,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//max!: arg 1: expected native of type *layout.Constraints")
 				}
@@ -11964,9 +11442,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//max!: arg 2: expected native of type image.Point")
 				}
@@ -11985,9 +11463,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//max?: arg 1: expected native of type *layout.Constraints")
 				}
@@ -12013,9 +11491,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//min!: arg 1: expected native of type *layout.Constraints")
 				}
@@ -12032,9 +11510,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//min!: arg 2: expected native of type image.Point")
 				}
@@ -12053,9 +11531,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//min?: arg 1: expected native of type *layout.Constraints")
 				}
@@ -12078,21 +11556,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Constraints.SubMax",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Constraints
+			var arg0Val layout.Constraints
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//sub-max: arg 1: expected native of type *layout.Constraints")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Constraints)//sub-max: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Constraints)//sub-max: arg 1: expected native")
@@ -12100,9 +11572,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Constraints)//sub-max: arg 2: expected native of type image.Point")
 				}
@@ -12110,7 +11582,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Constraints)//sub-max: arg 2: expected native")
 			}
-			res0 := (*arg0Val).SubMax(arg1Val)
+			res0 := arg0Val.SubMax(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Constraints)")
 			return res0Obj
@@ -12123,9 +11595,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//constraints!: arg 1: expected native of type *layout.Context")
 				}
@@ -12142,9 +11614,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *layout.Constraints
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*layout.Constraints)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Constraints); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//constraints!: arg 2: expected native of type *layout.Constraints")
 				}
@@ -12169,9 +11641,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//constraints?: arg 1: expected native of type *layout.Context")
 				}
@@ -12194,26 +11666,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Disabled",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//disabled: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//disabled: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//disabled: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Disabled()
+			res0 := arg0Val.Disabled()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Context)")
 			return res0Obj
@@ -12223,21 +11689,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Dp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//dp: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//dp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//dp: arg 1: expected native")
@@ -12263,7 +11723,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg1Val = unit.Dp(u)
 				}
 			}
-			res0 := (*arg0Val).Dp(arg1Val)
+			res0 := arg0Val.Dp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(res0))
 			return res0Obj
@@ -12273,26 +11733,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Enabled",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//enabled: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//enabled: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//enabled: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Enabled()
+			res0 := arg0Val.Enabled()
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -12302,21 +11756,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Event",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//event: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//event: arg 1: expected native")
@@ -12335,9 +11783,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 							return env.NewError("Go(*layout.Context)//event: arg 2: block item: " + err.Error() + "")
 						}
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(event.Filter)
-						if !ok {
+						if vc, ok := v.Value.(event.Filter); ok {
+							arg1Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*layout.Context)//event: arg 2: block item: expected native of type event.Filter")
 						}
@@ -12352,13 +11800,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						return env.NewError("Go(*layout.Context)//event: arg 2: block item: expected native")
 					}
 				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]event.Filter)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//event: arg 2: expected native of type []event.Filter")
-				}
 			case env.Integer:
 				if v.Value != 0 {
 					ps.FailureFlag = true
@@ -12369,7 +11810,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//event: arg 2: expected block, native or nil")
 			}
-			res0, res1 := (*arg0Val).Event(arg1Val...)
+			res0, res1 := arg0Val.Event(arg1Val...)
 			var res0Obj env.Object
 			res0Obj = ifaceToNative(ps.Idx, res0, "Go(event.Event)")
 			var res1Obj env.Object
@@ -12384,21 +11825,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Execute",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//execute: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//execute: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//execute: arg 1: expected native")
@@ -12413,9 +11848,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*layout.Context)//execute: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(input.Command)
-				if !ok {
+				if vc, ok := v.Value.(input.Command); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//execute: arg 2: expected native of type input.Command")
 				}
@@ -12429,7 +11864,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//execute: arg 2: expected native")
 			}
-			(*arg0Val).Execute(arg1Val)
+			arg0Val.Execute(arg1Val)
 			return arg0
 		},
 	},
@@ -12437,21 +11872,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Focused",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//focused: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//focused: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//focused: arg 1: expected native")
@@ -12466,9 +11895,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*layout.Context)//focused: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//focused: arg 2: expected native of type event.Tag")
 				}
@@ -12482,7 +11911,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//focused: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Focused(arg1Val)
+			res0 := arg0Val.Focused(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -12495,9 +11924,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//locale!: arg 1: expected native of type *layout.Context")
 				}
@@ -12514,9 +11943,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *system.Locale
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*system.Locale)
-				if !ok {
+				if vc, ok := v.Value.(*system.Locale); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//locale!: arg 2: expected native of type *system.Locale")
 				}
@@ -12541,9 +11970,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//locale?: arg 1: expected native of type *layout.Context")
 				}
@@ -12569,9 +11998,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//metric!: arg 1: expected native of type *layout.Context")
 				}
@@ -12588,9 +12017,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *unit.Metric
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//metric!: arg 2: expected native of type *unit.Metric")
 				}
@@ -12615,9 +12044,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//metric?: arg 1: expected native of type *layout.Context")
 				}
@@ -12643,9 +12072,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//now!: arg 1: expected native of type *layout.Context")
 				}
@@ -12662,9 +12091,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal time.Time
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(time.Time)
-				if !ok {
+				if vc, ok := v.Value.(time.Time); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//now!: arg 2: expected native of type time.Time")
 				}
@@ -12683,9 +12112,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//now?: arg 1: expected native of type *layout.Context")
 				}
@@ -12711,9 +12140,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//ops!: arg 1: expected native of type *layout.Context")
 				}
@@ -12730,9 +12159,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//ops!: arg 2: expected native of type *op.Ops")
 				}
@@ -12757,9 +12186,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//ops?: arg 1: expected native of type *layout.Context")
 				}
@@ -12785,9 +12214,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//reset: arg 1: expected native of type *layout.Context")
 				}
@@ -12812,9 +12241,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//source!: arg 1: expected native of type *layout.Context")
 				}
@@ -12831,9 +12260,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *input.Source
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*input.Source)
-				if !ok {
+				if vc, ok := v.Value.(*input.Source); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//source!: arg 2: expected native of type *input.Source")
 				}
@@ -12858,9 +12287,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//source?: arg 1: expected native of type *layout.Context")
 				}
@@ -12883,21 +12312,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Context.Sp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//sp: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Context)//sp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//sp: arg 1: expected native")
@@ -12905,9 +12328,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Context)//sp: arg 2: expected native of type unit.Sp")
 				}
@@ -12915,7 +12338,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Context)//sp: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Sp(arg1Val)
+			res0 := arg0Val.Sp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(res0))
 			return res0Obj
@@ -12928,9 +12351,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Dimensions
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Dimensions)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Dimensions); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Dimensions)//baseline!: arg 1: expected native of type *layout.Dimensions")
 				}
@@ -12962,9 +12385,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Dimensions
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Dimensions)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Dimensions); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Dimensions)//baseline?: arg 1: expected native of type *layout.Dimensions")
 				}
@@ -12990,9 +12413,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Dimensions
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Dimensions)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Dimensions); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Dimensions)//size!: arg 1: expected native of type *layout.Dimensions")
 				}
@@ -13009,9 +12432,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Dimensions)//size!: arg 2: expected native of type image.Point")
 				}
@@ -13030,9 +12453,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Dimensions
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Dimensions)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Dimensions); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Dimensions)//size?: arg 1: expected native of type *layout.Dimensions")
 				}
@@ -13058,9 +12481,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//alignment!: arg 1: expected native of type *layout.Flex")
 				}
@@ -13106,9 +12529,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//alignment?: arg 1: expected native of type *layout.Flex")
 				}
@@ -13134,9 +12557,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//axis!: arg 1: expected native of type *layout.Flex")
 				}
@@ -13182,9 +12605,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//axis?: arg 1: expected native of type *layout.Flex")
 				}
@@ -13207,40 +12630,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Flex.Layout",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Flex
+			var arg0Val layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//layout: arg 1: expected native of type *layout.Flex")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Flex)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Flex)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Flex)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Flex)//layout: arg 2: expected native")
@@ -13252,25 +12663,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						// arg2Val[i], ok = v.Value.(layout.FlexChild)
-						fc, ok := v.Value.(*layout.FlexChild)
-						if !ok {
+						if vc, ok := v.Value.(*layout.FlexChild); ok {
+							arg2Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*layout.Flex)//layout: arg 3: block item: expected native of type layout.FlexChild")
+							return env.NewError("Go(*layout.Flex)//layout: arg 3: block item: expected native of type *layout.FlexChild")
 						}
-						arg2Val[i] = *fc
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*layout.Flex)//layout: arg 3: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.([]layout.FlexChild)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Flex)//layout: arg 3: expected native of type []layout.FlexChild")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -13282,7 +12684,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Flex)//layout: arg 3: expected block, native or nil")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val...)
+			res0 := arg0Val.Layout(arg1Val, arg2Val...)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -13295,9 +12697,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//spacing!: arg 1: expected native of type *layout.Flex")
 				}
@@ -13343,9 +12745,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//spacing?: arg 1: expected native of type *layout.Flex")
 				}
@@ -13371,9 +12773,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//weight-sum!: arg 1: expected native of type *layout.Flex")
 				}
@@ -13405,9 +12807,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Flex
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Flex)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Flex); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Flex)//weight-sum?: arg 1: expected native of type *layout.Flex")
 				}
@@ -13433,9 +12835,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//bottom!: arg 1: expected native of type *layout.Inset")
 				}
@@ -13481,9 +12883,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//bottom?: arg 1: expected native of type *layout.Inset")
 				}
@@ -13506,40 +12908,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Inset.Layout",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Inset
+			var arg0Val layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//layout: arg 1: expected native of type *layout.Inset")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Inset)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Inset)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Inset)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Inset)//layout: arg 2: expected native")
@@ -13571,18 +12961,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								resYY, ok := v.Value.(*layout.Dimensions)
-								// res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*layout.Inset)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*layout.Inset)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
 									return res
 								}
-								res = *resYY
 							default:
 								fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 									"Go(*layout.Inset)//layout: arg 3: callback result: expected native",
@@ -13606,7 +12994,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -13619,9 +13007,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//left!: arg 1: expected native of type *layout.Inset")
 				}
@@ -13667,9 +13055,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//left?: arg 1: expected native of type *layout.Inset")
 				}
@@ -13695,9 +13083,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//right!: arg 1: expected native of type *layout.Inset")
 				}
@@ -13743,9 +13131,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//right?: arg 1: expected native of type *layout.Inset")
 				}
@@ -13771,9 +13159,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//top!: arg 1: expected native of type *layout.Inset")
 				}
@@ -13819,9 +13207,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Inset
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Inset)//top?: arg 1: expected native of type *layout.Inset")
 				}
@@ -13847,9 +13235,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//alignment!: arg 1: expected native of type *layout.List")
 				}
@@ -13895,9 +13283,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//alignment?: arg 1: expected native of type *layout.List")
 				}
@@ -13923,9 +13311,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//axis!: arg 1: expected native of type *layout.List")
 				}
@@ -13971,9 +13359,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//axis?: arg 1: expected native of type *layout.List")
 				}
@@ -13999,9 +13387,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//dragging: arg 1: expected native of type *layout.List")
 				}
@@ -14028,9 +13416,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//layout: arg 1: expected native of type *layout.List")
 				}
@@ -14044,21 +13432,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.List)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.List)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.List)//layout: arg 2: expected native")
@@ -14098,11 +13480,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*layout.List)//layout: arg 4: callback result: expected native of type layout.Dimensions",
+										"Go(*layout.List)//layout: arg 4: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -14131,7 +13513,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = layout.ListElement(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -14144,9 +13526,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//position!: arg 1: expected native of type *layout.List")
 				}
@@ -14163,9 +13545,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *layout.Position
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//position!: arg 2: expected native of type *layout.Position")
 				}
@@ -14190,9 +13572,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//position?: arg 1: expected native of type *layout.List")
 				}
@@ -14218,9 +13600,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//scroll-by: arg 1: expected native of type *layout.List")
 				}
@@ -14252,9 +13634,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//scroll-to: arg 1: expected native of type *layout.List")
 				}
@@ -14286,9 +13668,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//scroll-to-end!: arg 1: expected native of type *layout.List")
 				}
@@ -14320,9 +13702,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.List)//scroll-to-end?: arg 1: expected native of type *layout.List")
 				}
@@ -14348,9 +13730,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//before-end!: arg 1: expected native of type *layout.Position")
 				}
@@ -14382,9 +13764,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//before-end?: arg 1: expected native of type *layout.Position")
 				}
@@ -14410,9 +13792,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//count!: arg 1: expected native of type *layout.Position")
 				}
@@ -14444,9 +13826,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//count?: arg 1: expected native of type *layout.Position")
 				}
@@ -14472,9 +13854,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//first!: arg 1: expected native of type *layout.Position")
 				}
@@ -14506,9 +13888,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//first?: arg 1: expected native of type *layout.Position")
 				}
@@ -14534,9 +13916,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//length!: arg 1: expected native of type *layout.Position")
 				}
@@ -14568,9 +13950,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//length?: arg 1: expected native of type *layout.Position")
 				}
@@ -14596,9 +13978,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//offset!: arg 1: expected native of type *layout.Position")
 				}
@@ -14630,9 +14012,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//offset-last!: arg 1: expected native of type *layout.Position")
 				}
@@ -14664,9 +14046,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//offset-last?: arg 1: expected native of type *layout.Position")
 				}
@@ -14692,9 +14074,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Position
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Position)//offset?: arg 1: expected native of type *layout.Position")
 				}
@@ -14720,9 +14102,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Spacer
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Spacer)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Spacer); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Spacer)//height!: arg 1: expected native of type *layout.Spacer")
 				}
@@ -14768,9 +14150,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Spacer
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Spacer)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Spacer); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Spacer)//height?: arg 1: expected native of type *layout.Spacer")
 				}
@@ -14793,45 +14175,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Spacer.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Spacer
+			var arg0Val layout.Spacer
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Spacer)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Spacer); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Spacer)//layout: arg 1: expected native of type *layout.Spacer")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Spacer)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Spacer)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Spacer)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Spacer)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Spacer)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -14844,9 +14214,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Spacer
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Spacer)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Spacer); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Spacer)//width!: arg 1: expected native of type *layout.Spacer")
 				}
@@ -14892,9 +14262,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Spacer
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Spacer)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Spacer); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Spacer)//width?: arg 1: expected native of type *layout.Spacer")
 				}
@@ -14920,9 +14290,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Stack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Stack)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Stack); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Stack)//alignment!: arg 1: expected native of type *layout.Stack")
 				}
@@ -14968,9 +14338,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *layout.Stack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*layout.Stack)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Stack); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Stack)//alignment?: arg 1: expected native of type *layout.Stack")
 				}
@@ -14993,40 +14363,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "layout.Stack.Layout",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Stack
+			var arg0Val layout.Stack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Stack)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Stack); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Stack)//layout: arg 1: expected native of type *layout.Stack")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Stack)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Stack)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*layout.Stack)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Stack)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Stack)//layout: arg 2: expected native")
@@ -15038,23 +14396,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg2Val[i], ok = v.Value.(layout.StackChild)
-						if !ok {
+						if vc, ok := v.Value.(*layout.StackChild); ok {
+							arg2Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*layout.Stack)//layout: arg 3: block item: expected native of type layout.StackChild")
+							return env.NewError("Go(*layout.Stack)//layout: arg 3: block item: expected native of type *layout.StackChild")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*layout.Stack)//layout: arg 3: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.([]layout.StackChild)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*layout.Stack)//layout: arg 3: expected native of type []layout.StackChild")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -15066,7 +14417,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*layout.Stack)//layout: arg 3: expected block, native or nil")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val...)
+			res0 := arg0Val.Layout(arg1Val, arg2Val...)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -15079,9 +14430,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//background!: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
@@ -15098,9 +14449,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//background!: arg 2: expected native of type color.NRGBA")
 				}
@@ -15119,9 +14470,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//background?: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
@@ -15147,9 +14498,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//button!: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
@@ -15166,9 +14517,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//button!: arg 2: expected native of type *widget.Clickable")
 				}
@@ -15193,9 +14544,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//button?: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
@@ -15221,9 +14572,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//corner-radius!: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
@@ -15269,9 +14620,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//corner-radius?: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
@@ -15294,40 +14645,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ButtonLayoutStyle.Layout",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ButtonLayoutStyle
+			var arg0Val material.ButtonLayoutStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ButtonLayoutStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonLayoutStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//layout: arg 1: expected native of type *material.ButtonLayoutStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ButtonLayoutStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ButtonLayoutStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonLayoutStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ButtonLayoutStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ButtonLayoutStyle)//layout: arg 2: expected native")
@@ -15359,11 +14698,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*material.ButtonLayoutStyle)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*material.ButtonLayoutStyle)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -15392,7 +14731,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -15405,9 +14744,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//background!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15424,9 +14763,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//background!: arg 2: expected native of type color.NRGBA")
 				}
@@ -15445,9 +14784,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//background?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15473,9 +14812,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//button!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15492,9 +14831,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//button!: arg 2: expected native of type *widget.Clickable")
 				}
@@ -15519,9 +14858,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//button?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15547,9 +14886,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//color!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15566,9 +14905,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -15587,9 +14926,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//color?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15615,9 +14954,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//corner-radius!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15663,9 +15002,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//corner-radius?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15691,9 +15030,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//font!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15710,9 +15049,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *font.Font
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//font!: arg 2: expected native of type *font.Font")
 				}
@@ -15737,9 +15076,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//font?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15765,9 +15104,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//inset!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15784,9 +15123,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *layout.Inset
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//inset!: arg 2: expected native of type *layout.Inset")
 				}
@@ -15811,9 +15150,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//inset?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15836,45 +15175,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ButtonStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ButtonStyle
+			var arg0Val material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//layout: arg 1: expected native of type *material.ButtonStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ButtonStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ButtonStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ButtonStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ButtonStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -15887,9 +15214,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//text!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15921,9 +15248,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//text-size!: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15940,9 +15267,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//text-size!: arg 2: expected native of type unit.Sp")
 				}
@@ -15961,9 +15288,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//text-size?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -15989,9 +15316,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ButtonStyle)//text?: arg 1: expected native of type *material.ButtonStyle")
 				}
@@ -16017,9 +15344,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.CheckBoxStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.CheckBoxStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.CheckBoxStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.CheckBoxStyle)//check-box!: arg 1: expected native of type *material.CheckBoxStyle")
 				}
@@ -16036,9 +15363,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Bool
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.CheckBoxStyle)//check-box!: arg 2: expected native of type *widget.Bool")
 				}
@@ -16063,9 +15390,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.CheckBoxStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.CheckBoxStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.CheckBoxStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.CheckBoxStyle)//check-box?: arg 1: expected native of type *material.CheckBoxStyle")
 				}
@@ -16088,45 +15415,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.CheckBoxStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.CheckBoxStyle
+			var arg0Val material.CheckBoxStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.CheckBoxStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.CheckBoxStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.CheckBoxStyle)//layout: arg 1: expected native of type *material.CheckBoxStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.CheckBoxStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.CheckBoxStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.CheckBoxStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.CheckBoxStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.CheckBoxStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -16139,9 +15454,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//actions!: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16187,9 +15502,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//actions?: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16215,9 +15530,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//background!: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16234,9 +15549,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//background!: arg 2: expected native of type color.NRGBA")
 				}
@@ -16255,9 +15570,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//background?: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16283,9 +15598,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//decorations!: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16302,9 +15617,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Decorations
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//decorations!: arg 2: expected native of type *widget.Decorations")
 				}
@@ -16329,9 +15644,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//decorations?: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16357,9 +15672,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//foreground!: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16376,9 +15691,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//foreground!: arg 2: expected native of type color.NRGBA")
 				}
@@ -16397,9 +15712,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//foreground?: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16422,45 +15737,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.DecorationsStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.DecorationsStyle
+			var arg0Val material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//layout: arg 1: expected native of type *material.DecorationsStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.DecorationsStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.DecorationsStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.DecorationsStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.DecorationsStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -16473,9 +15776,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//title!: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16492,9 +15795,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.LabelStyle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//title!: arg 2: expected native of type *material.LabelStyle")
 				}
@@ -16519,9 +15822,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.DecorationsStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.DecorationsStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.DecorationsStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.DecorationsStyle)//title?: arg 1: expected native of type *material.DecorationsStyle")
 				}
@@ -16547,9 +15850,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//color!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16566,9 +15869,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -16587,9 +15890,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//color?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16615,9 +15918,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//editor!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16634,9 +15937,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Editor
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//editor!: arg 2: expected native of type *widget.Editor")
 				}
@@ -16661,9 +15964,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//editor?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16689,9 +15992,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//font!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16708,9 +16011,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *font.Font
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//font!: arg 2: expected native of type *font.Font")
 				}
@@ -16735,9 +16038,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//font?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16763,9 +16066,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//hint!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16797,9 +16100,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//hint-color!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16816,9 +16119,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//hint-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -16837,9 +16140,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//hint-color?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16865,9 +16168,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//hint?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16890,45 +16193,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.EditorStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.EditorStyle
+			var arg0Val material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//layout: arg 1: expected native of type *material.EditorStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.EditorStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.EditorStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.EditorStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.EditorStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -16941,9 +16232,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//line-height!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -16960,9 +16251,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//line-height!: arg 2: expected native of type unit.Sp")
 				}
@@ -16981,9 +16272,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//line-height-scale!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17015,9 +16306,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//line-height-scale?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17043,9 +16334,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//line-height?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17071,9 +16362,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//selection-color!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17090,9 +16381,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//selection-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -17111,9 +16402,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//selection-color?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17139,9 +16430,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//text-size!: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17158,9 +16449,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//text-size!: arg 2: expected native of type unit.Sp")
 				}
@@ -17179,9 +16470,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.EditorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.EditorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.EditorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.EditorStyle)//text-size?: arg 1: expected native of type *material.EditorStyle")
 				}
@@ -17207,9 +16498,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//background!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17226,9 +16517,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//background!: arg 2: expected native of type color.NRGBA")
 				}
@@ -17247,9 +16538,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//background?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17275,9 +16566,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//button!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17294,9 +16585,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//button!: arg 2: expected native of type *widget.Clickable")
 				}
@@ -17321,9 +16612,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//button?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17349,9 +16640,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//color!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17368,9 +16659,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -17389,9 +16680,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//color?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17417,9 +16708,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//description!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17451,9 +16742,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//description?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17479,9 +16770,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//icon!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17498,9 +16789,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Icon
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Icon)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Icon); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//icon!: arg 2: expected native of type *widget.Icon")
 				}
@@ -17525,9 +16816,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//icon?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17553,9 +16844,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//inset!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17572,9 +16863,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *layout.Inset
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*layout.Inset)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Inset); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//inset!: arg 2: expected native of type *layout.Inset")
 				}
@@ -17599,9 +16890,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//inset?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17624,45 +16915,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.IconButtonStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.IconButtonStyle
+			var arg0Val material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//layout: arg 1: expected native of type *material.IconButtonStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.IconButtonStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.IconButtonStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.IconButtonStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.IconButtonStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -17675,9 +16954,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//size!: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17723,9 +17002,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.IconButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.IconButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.IconButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.IconButtonStyle)//size?: arg 1: expected native of type *material.IconButtonStyle")
 				}
@@ -17751,9 +17030,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//alignment!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -17799,9 +17078,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//alignment?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -17827,9 +17106,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//color!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -17846,9 +17125,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -17867,9 +17146,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//color?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -17895,9 +17174,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//font!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -17914,9 +17193,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *font.Font
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//font!: arg 2: expected native of type *font.Font")
 				}
@@ -17941,9 +17220,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//font?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -17966,45 +17245,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.LabelStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.LabelStyle
+			var arg0Val material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//layout: arg 1: expected native of type *material.LabelStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.LabelStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.LabelStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.LabelStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.LabelStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -18017,9 +17284,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//line-height!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18036,9 +17303,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//line-height!: arg 2: expected native of type unit.Sp")
 				}
@@ -18057,9 +17324,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//line-height-scale!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18091,9 +17358,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//line-height-scale?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18119,9 +17386,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//line-height?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18147,9 +17414,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//max-lines!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18181,9 +17448,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//max-lines?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18209,9 +17476,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//selection-color!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18228,9 +17495,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//selection-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -18249,9 +17516,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//selection-color?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18277,9 +17544,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//shaper!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18296,9 +17563,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *text.Shaper
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//shaper!: arg 2: expected native of type *text.Shaper")
 				}
@@ -18323,9 +17590,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//shaper?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18351,9 +17618,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//state!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18370,9 +17637,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Selectable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//state!: arg 2: expected native of type *widget.Selectable")
 				}
@@ -18397,9 +17664,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//state?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18425,9 +17692,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//text!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18459,9 +17726,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//text-size!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18478,9 +17745,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//text-size!: arg 2: expected native of type unit.Sp")
 				}
@@ -18499,9 +17766,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//text-size?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18527,9 +17794,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//text?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18555,9 +17822,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//truncator!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18589,9 +17856,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//truncator?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18617,9 +17884,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//wrap-policy!: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18665,9 +17932,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LabelStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LabelStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LabelStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LabelStyle)//wrap-policy?: arg 1: expected native of type *material.LabelStyle")
 				}
@@ -18693,9 +17960,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//anchor-strategy!: arg 1: expected native of type *material.ListStyle")
 				}
@@ -18741,9 +18008,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//anchor-strategy!-1: arg 1: expected native of type *material.ListStyle")
 				}
@@ -18789,9 +18056,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//anchor-strategy?: arg 1: expected native of type *material.ListStyle")
 				}
@@ -18817,9 +18084,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//anchor-strategy?-1: arg 1: expected native of type *material.ListStyle")
 				}
@@ -18845,9 +18112,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//indicator!: arg 1: expected native of type *material.ListStyle")
 				}
@@ -18864,9 +18131,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.ScrollIndicatorStyle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//indicator!: arg 2: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -18891,9 +18158,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//indicator?: arg 1: expected native of type *material.ListStyle")
 				}
@@ -18916,40 +18183,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ListStyle.Layout",
 		Argsn: 4,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ListStyle
+			var arg0Val material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//layout: arg 1: expected native of type *material.ListStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ListStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ListStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ListStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ListStyle)//layout: arg 2: expected native")
@@ -18989,11 +18244,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*material.ListStyle)//layout: arg 4: callback result: expected native of type layout.Dimensions",
+										"Go(*material.ListStyle)//layout: arg 4: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -19022,7 +18277,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = layout.ListElement(u)
 				}
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -19035,9 +18290,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//scrollbar!: arg 1: expected native of type *material.ListStyle")
 				}
@@ -19054,9 +18309,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Scrollbar
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//scrollbar!: arg 2: expected native of type *widget.Scrollbar")
 				}
@@ -19081,9 +18336,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//scrollbar-style!: arg 1: expected native of type *material.ListStyle")
 				}
@@ -19100,9 +18355,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.ScrollbarStyle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//scrollbar-style!: arg 2: expected native of type *material.ScrollbarStyle")
 				}
@@ -19127,9 +18382,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//scrollbar-style?: arg 1: expected native of type *material.ListStyle")
 				}
@@ -19155,9 +18410,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//scrollbar?: arg 1: expected native of type *material.ListStyle")
 				}
@@ -19183,9 +18438,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//track!: arg 1: expected native of type *material.ListStyle")
 				}
@@ -19202,9 +18457,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.ScrollTrackStyle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//track!: arg 2: expected native of type *material.ScrollTrackStyle")
 				}
@@ -19229,9 +18484,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//track?: arg 1: expected native of type *material.ListStyle")
 				}
@@ -19254,26 +18509,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ListStyle.Width",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ListStyle
+			var arg0Val material.ListStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ListStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ListStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ListStyle)//width: arg 1: expected native of type *material.ListStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ListStyle)//width: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ListStyle)//width: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Width()
+			res0 := arg0Val.Width()
 			var res0Obj env.Object
 			res0Obj = *env.NewDecimal(float64(float32(res0)))
 			return res0Obj
@@ -19286,9 +18535,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LoaderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LoaderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LoaderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LoaderStyle)//color!: arg 1: expected native of type *material.LoaderStyle")
 				}
@@ -19305,9 +18554,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LoaderStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -19326,9 +18575,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.LoaderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.LoaderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LoaderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LoaderStyle)//color?: arg 1: expected native of type *material.LoaderStyle")
 				}
@@ -19351,45 +18600,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.LoaderStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.LoaderStyle
+			var arg0Val material.LoaderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.LoaderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.LoaderStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LoaderStyle)//layout: arg 1: expected native of type *material.LoaderStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.LoaderStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.LoaderStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.LoaderStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.LoaderStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.LoaderStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -19402,9 +18639,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//bg!: arg 1: expected native of type *material.Palette")
 				}
@@ -19421,9 +18658,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//bg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -19442,9 +18679,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//bg?: arg 1: expected native of type *material.Palette")
 				}
@@ -19470,9 +18707,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//contrast-bg!: arg 1: expected native of type *material.Palette")
 				}
@@ -19489,9 +18726,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//contrast-bg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -19510,9 +18747,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//contrast-bg?: arg 1: expected native of type *material.Palette")
 				}
@@ -19538,9 +18775,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//contrast-fg!: arg 1: expected native of type *material.Palette")
 				}
@@ -19557,9 +18794,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//contrast-fg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -19578,9 +18815,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//contrast-fg?: arg 1: expected native of type *material.Palette")
 				}
@@ -19606,9 +18843,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//fg!: arg 1: expected native of type *material.Palette")
 				}
@@ -19625,9 +18862,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//fg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -19646,9 +18883,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Palette
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Palette)//fg?: arg 1: expected native of type *material.Palette")
 				}
@@ -19674,9 +18911,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//color!: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19693,9 +18930,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -19714,9 +18951,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//color?: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19742,9 +18979,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//height!: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19790,9 +19027,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//height?: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19815,45 +19052,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ProgressBarStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ProgressBarStyle
+			var arg0Val material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//layout: arg 1: expected native of type *material.ProgressBarStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ProgressBarStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ProgressBarStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ProgressBarStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ProgressBarStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -19866,9 +19091,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//progress!: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19900,9 +19125,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//progress?: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19928,9 +19153,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//radius!: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -19976,9 +19201,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//radius?: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -20004,9 +19229,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//track-color!: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -20023,9 +19248,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//track-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -20044,9 +19269,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressBarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressBarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressBarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressBarStyle)//track-color?: arg 1: expected native of type *material.ProgressBarStyle")
 				}
@@ -20072,9 +19297,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressCircleStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressCircleStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressCircleStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//color!: arg 1: expected native of type *material.ProgressCircleStyle")
 				}
@@ -20091,9 +19316,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -20112,9 +19337,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressCircleStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressCircleStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressCircleStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//color?: arg 1: expected native of type *material.ProgressCircleStyle")
 				}
@@ -20137,45 +19362,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ProgressCircleStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ProgressCircleStyle
+			var arg0Val material.ProgressCircleStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ProgressCircleStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressCircleStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//layout: arg 1: expected native of type *material.ProgressCircleStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ProgressCircleStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ProgressCircleStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ProgressCircleStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ProgressCircleStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -20188,9 +19401,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressCircleStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressCircleStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressCircleStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//progress!: arg 1: expected native of type *material.ProgressCircleStyle")
 				}
@@ -20222,9 +19435,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ProgressCircleStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ProgressCircleStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ProgressCircleStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ProgressCircleStyle)//progress?: arg 1: expected native of type *material.ProgressCircleStyle")
 				}
@@ -20250,9 +19463,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.RadioButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.RadioButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.RadioButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//group!: arg 1: expected native of type *material.RadioButtonStyle")
 				}
@@ -20269,9 +19482,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Enum
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//group!: arg 2: expected native of type *widget.Enum")
 				}
@@ -20296,9 +19509,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.RadioButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.RadioButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.RadioButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//group?: arg 1: expected native of type *material.RadioButtonStyle")
 				}
@@ -20324,9 +19537,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.RadioButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.RadioButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.RadioButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//key!: arg 1: expected native of type *material.RadioButtonStyle")
 				}
@@ -20358,9 +19571,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.RadioButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.RadioButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.RadioButtonStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//key?: arg 1: expected native of type *material.RadioButtonStyle")
 				}
@@ -20383,45 +19596,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.RadioButtonStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.RadioButtonStyle
+			var arg0Val material.RadioButtonStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.RadioButtonStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.RadioButtonStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//layout: arg 1: expected native of type *material.RadioButtonStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.RadioButtonStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.RadioButtonStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.RadioButtonStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.RadioButtonStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.RadioButtonStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -20434,9 +19635,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//color!: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20453,9 +19654,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -20474,9 +19675,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//color?: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20502,9 +19703,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//corner-radius!: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20550,9 +19751,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//corner-radius?: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20578,9 +19779,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//hover-color!: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20597,9 +19798,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//hover-color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -20618,9 +19819,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//hover-color?: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20646,9 +19847,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//major-min-len!: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20694,9 +19895,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//major-min-len?: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20722,9 +19923,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//minor-width!: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20770,9 +19971,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollIndicatorStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollIndicatorStyle)//minor-width?: arg 1: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -20798,9 +19999,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollTrackStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//color!: arg 1: expected native of type *material.ScrollTrackStyle")
 				}
@@ -20817,9 +20018,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -20838,9 +20039,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollTrackStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//color?: arg 1: expected native of type *material.ScrollTrackStyle")
 				}
@@ -20866,9 +20067,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollTrackStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//major-padding!: arg 1: expected native of type *material.ScrollTrackStyle")
 				}
@@ -20914,9 +20115,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollTrackStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//major-padding?: arg 1: expected native of type *material.ScrollTrackStyle")
 				}
@@ -20942,9 +20143,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollTrackStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//minor-padding!: arg 1: expected native of type *material.ScrollTrackStyle")
 				}
@@ -20990,9 +20191,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollTrackStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollTrackStyle)//minor-padding?: arg 1: expected native of type *material.ScrollTrackStyle")
 				}
@@ -21018,9 +20219,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//indicator!: arg 1: expected native of type *material.ScrollbarStyle")
 				}
@@ -21037,9 +20238,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.ScrollIndicatorStyle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.ScrollIndicatorStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollIndicatorStyle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//indicator!: arg 2: expected native of type *material.ScrollIndicatorStyle")
 				}
@@ -21064,9 +20265,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//indicator?: arg 1: expected native of type *material.ScrollbarStyle")
 				}
@@ -21089,40 +20290,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ScrollbarStyle.Layout",
 		Argsn: 5,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ScrollbarStyle
+			var arg0Val material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 1: expected native of type *material.ScrollbarStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 2: expected native")
@@ -21162,7 +20351,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ScrollbarStyle)//layout: arg 5: expected decimal")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val, arg3Val, arg4Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val, arg4Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -21175,9 +20364,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//scrollbar!: arg 1: expected native of type *material.ScrollbarStyle")
 				}
@@ -21194,9 +20383,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Scrollbar
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//scrollbar!: arg 2: expected native of type *widget.Scrollbar")
 				}
@@ -21221,9 +20410,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//scrollbar?: arg 1: expected native of type *material.ScrollbarStyle")
 				}
@@ -21249,9 +20438,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//track!: arg 1: expected native of type *material.ScrollbarStyle")
 				}
@@ -21268,9 +20457,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.ScrollTrackStyle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.ScrollTrackStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollTrackStyle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//track!: arg 2: expected native of type *material.ScrollTrackStyle")
 				}
@@ -21295,9 +20484,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//track?: arg 1: expected native of type *material.ScrollbarStyle")
 				}
@@ -21320,26 +20509,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.ScrollbarStyle.Width",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.ScrollbarStyle
+			var arg0Val material.ScrollbarStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.ScrollbarStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.ScrollbarStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.ScrollbarStyle)//width: arg 1: expected native of type *material.ScrollbarStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.ScrollbarStyle)//width: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.ScrollbarStyle)//width: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Width()
+			res0 := arg0Val.Width()
 			var res0Obj env.Object
 			res0Obj = *env.NewDecimal(float64(float32(res0)))
 			return res0Obj
@@ -21352,9 +20535,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//axis!: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21400,9 +20583,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//axis?: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21428,9 +20611,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//color!: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21447,9 +20630,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -21468,9 +20651,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//color?: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21496,9 +20679,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//finger-size!: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21544,9 +20727,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//finger-size?: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21572,9 +20755,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//float!: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21591,9 +20774,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Float
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//float!: arg 2: expected native of type *widget.Float")
 				}
@@ -21618,9 +20801,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//float?: arg 1: expected native of type *material.SliderStyle")
 				}
@@ -21643,45 +20826,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.SliderStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.SliderStyle
+			var arg0Val material.SliderStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.SliderStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SliderStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//layout: arg 1: expected native of type *material.SliderStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.SliderStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.SliderStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SliderStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.SliderStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.SliderStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -21694,9 +20865,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//color!: arg 1: expected native of type *material.SwitchStyle")
 				}
@@ -21717,13 +20888,13 @@ var builtinsGenerated = map[string]*env.Builtin{
 			}
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(struct {
+				if vc, ok := v.Value.(struct {
 					Enabled  color.NRGBA
 					Disabled color.NRGBA
 					Track    color.NRGBA
-				})
-				if !ok {
+				}); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//color!: arg 2: expected native of type struct{Enabled color.NRGBA; Disabled color.NRGBA; Track color.NRGBA}")
 				}
@@ -21742,9 +20913,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//color?: arg 1: expected native of type *material.SwitchStyle")
 				}
@@ -21770,9 +20941,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//description!: arg 1: expected native of type *material.SwitchStyle")
 				}
@@ -21804,9 +20975,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//description?: arg 1: expected native of type *material.SwitchStyle")
 				}
@@ -21829,45 +21000,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.SwitchStyle.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.SwitchStyle
+			var arg0Val material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//layout: arg 1: expected native of type *material.SwitchStyle")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.SwitchStyle)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.SwitchStyle)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.SwitchStyle)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.SwitchStyle)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -21880,9 +21039,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//switch!: arg 1: expected native of type *material.SwitchStyle")
 				}
@@ -21899,9 +21058,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Bool
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//switch!: arg 2: expected native of type *widget.Bool")
 				}
@@ -21926,9 +21085,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.SwitchStyle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.SwitchStyle)
-				if !ok {
+				if vc, ok := v.Value.(*material.SwitchStyle); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.SwitchStyle)//switch?: arg 1: expected native of type *material.SwitchStyle")
 				}
@@ -21954,9 +21113,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//bg!: arg 1: expected native of type *material.Theme")
 				}
@@ -21973,9 +21132,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//bg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -21994,9 +21153,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//bg?: arg 1: expected native of type *material.Theme")
 				}
@@ -22022,9 +21181,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//contrast-bg!: arg 1: expected native of type *material.Theme")
 				}
@@ -22041,9 +21200,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//contrast-bg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -22062,9 +21221,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//contrast-bg?: arg 1: expected native of type *material.Theme")
 				}
@@ -22090,9 +21249,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//contrast-fg!: arg 1: expected native of type *material.Theme")
 				}
@@ -22109,9 +21268,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//contrast-fg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -22130,9 +21289,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//contrast-fg?: arg 1: expected native of type *material.Theme")
 				}
@@ -22158,9 +21317,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//face!: arg 1: expected native of type *material.Theme")
 				}
@@ -22206,9 +21365,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//face?: arg 1: expected native of type *material.Theme")
 				}
@@ -22234,9 +21393,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//fg!: arg 1: expected native of type *material.Theme")
 				}
@@ -22253,9 +21412,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//fg!: arg 2: expected native of type color.NRGBA")
 				}
@@ -22274,9 +21433,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//fg?: arg 1: expected native of type *material.Theme")
 				}
@@ -22302,9 +21461,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//finger-size!: arg 1: expected native of type *material.Theme")
 				}
@@ -22350,9 +21509,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//finger-size?: arg 1: expected native of type *material.Theme")
 				}
@@ -22378,9 +21537,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//icon!: arg 1: expected native of type *material.Theme")
 				}
@@ -22402,14 +21561,14 @@ var builtinsGenerated = map[string]*env.Builtin{
 			}
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(struct {
+				if vc, ok := v.Value.(struct {
 					CheckBoxChecked   *widget.Icon
 					CheckBoxUnchecked *widget.Icon
 					RadioChecked      *widget.Icon
 					RadioUnchecked    *widget.Icon
-				})
-				if !ok {
+				}); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//icon!: arg 2: expected native of type struct{CheckBoxChecked *widget.Icon; CheckBoxUnchecked *widget.Icon; RadioChecked *widget.Icon; RadioUnchecked *widget.Icon}")
 				}
@@ -22428,9 +21587,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//icon?: arg 1: expected native of type *material.Theme")
 				}
@@ -22456,9 +21615,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//palette!: arg 1: expected native of type *material.Theme")
 				}
@@ -22475,9 +21634,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *material.Palette
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//palette!: arg 2: expected native of type *material.Palette")
 				}
@@ -22502,9 +21661,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//palette?: arg 1: expected native of type *material.Theme")
 				}
@@ -22530,9 +21689,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//shaper!: arg 1: expected native of type *material.Theme")
 				}
@@ -22549,9 +21708,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *text.Shaper
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//shaper!: arg 2: expected native of type *text.Shaper")
 				}
@@ -22576,9 +21735,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//shaper?: arg 1: expected native of type *material.Theme")
 				}
@@ -22604,9 +21763,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//text-size!: arg 1: expected native of type *material.Theme")
 				}
@@ -22623,9 +21782,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//text-size!: arg 2: expected native of type unit.Sp")
 				}
@@ -22644,9 +21803,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//text-size?: arg 1: expected native of type *material.Theme")
 				}
@@ -22669,45 +21828,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.Theme.WithPalette",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *material.Theme
+			var arg0Val material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//with-palette: arg 1: expected native of type *material.Theme")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.Theme)//with-palette: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.Theme)//with-palette: arg 1: expected native")
 			}
-			var arg1Val *material.Palette
+			var arg1Val material.Palette
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*material.Palette)
-				if !ok {
+				if vc, ok := v.Value.(*material.Palette); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*material.Theme)//with-palette: arg 2: expected native of type *material.Palette")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*material.Theme)//with-palette: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*material.Theme)//with-palette: arg 2: expected native")
 			}
-			res0 := (*arg0Val).WithPalette(*arg1Val)
+			res0 := arg0Val.WithPalette(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*material.Theme)")
 			return res0Obj
@@ -22717,21 +21864,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.CallOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *op.CallOp
+			var arg0Val op.CallOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.CallOp)
-				if !ok {
+				if vc, ok := v.Value.(*op.CallOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.CallOp)//add: arg 1: expected native of type *op.CallOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*op.CallOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.CallOp)//add: arg 1: expected native")
@@ -22739,9 +21880,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.CallOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -22755,7 +21896,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.CallOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -22766,9 +21907,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *op.InvalidateCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*op.InvalidateCmd)
-				if !ok {
+				if vc, ok := v.Value.(*op.InvalidateCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.InvalidateCmd)//at!: arg 1: expected native of type *op.InvalidateCmd")
 				}
@@ -22785,9 +21926,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal time.Time
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(time.Time)
-				if !ok {
+				if vc, ok := v.Value.(time.Time); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.InvalidateCmd)//at!: arg 2: expected native of type time.Time")
 				}
@@ -22806,9 +21947,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *op.InvalidateCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*op.InvalidateCmd)
-				if !ok {
+				if vc, ok := v.Value.(*op.InvalidateCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.InvalidateCmd)//at?: arg 1: expected native of type *op.InvalidateCmd")
 				}
@@ -22831,26 +21972,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.InvalidateCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *op.InvalidateCmd
+			var arg0Val op.InvalidateCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.InvalidateCmd)
-				if !ok {
+				if vc, ok := v.Value.(*op.InvalidateCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.InvalidateCmd)//implements-command: arg 1: expected native of type *op.InvalidateCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*op.InvalidateCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.InvalidateCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -22858,26 +21993,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.MacroOp.Stop",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *op.MacroOp
+			var arg0Val op.MacroOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.MacroOp)
-				if !ok {
+				if vc, ok := v.Value.(*op.MacroOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.MacroOp)//stop: arg 1: expected native of type *op.MacroOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*op.MacroOp)//stop: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.MacroOp)//stop: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Stop()
+			res0 := arg0Val.Stop()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*op.CallOp)")
 			return res0Obj
@@ -22890,9 +22019,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.Ops)//reset: arg 1: expected native of type *op.Ops")
 				}
@@ -22914,21 +22043,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.TransformOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *op.TransformOp
+			var arg0Val op.TransformOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.TransformOp)
-				if !ok {
+				if vc, ok := v.Value.(*op.TransformOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.TransformOp)//add: arg 1: expected native of type *op.TransformOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*op.TransformOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.TransformOp)//add: arg 1: expected native")
@@ -22936,9 +22059,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.TransformOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -22952,7 +22075,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.TransformOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -22960,21 +22083,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.TransformOp.Push",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *op.TransformOp
+			var arg0Val op.TransformOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.TransformOp)
-				if !ok {
+				if vc, ok := v.Value.(*op.TransformOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.TransformOp)//push: arg 1: expected native of type *op.TransformOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*op.TransformOp)//push: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.TransformOp)//push: arg 1: expected native")
@@ -22982,9 +22099,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.TransformOp)//push: arg 2: expected native of type *op.Ops")
 				}
@@ -22998,7 +22115,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.TransformOp)//push: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Push(arg1Val)
+			res0 := arg0Val.Push(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*op.TransformStack)")
 			return res0Obj
@@ -23008,26 +22125,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.TransformStack.Pop",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *op.TransformStack
+			var arg0Val op.TransformStack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.TransformStack)
-				if !ok {
+				if vc, ok := v.Value.(*op.TransformStack); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*op.TransformStack)//pop: arg 1: expected native of type *op.TransformStack")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*op.TransformStack)//pop: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*op.TransformStack)//pop: arg 1: expected native")
 			}
-			(*arg0Val).Pop()
+			arg0Val.Pop()
 			return arg0
 		},
 	},
@@ -23035,26 +22146,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "opentype.Face.Face",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *opentype.Face
+			var arg0Val opentype.Face
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*opentype.Face)
-				if !ok {
+				if vc, ok := v.Value.(*opentype.Face); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*opentype.Face)//face: arg 1: expected native of type *opentype.Face")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*opentype.Face)//face: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*opentype.Face)//face: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Face()
+			res0 := arg0Val.Face()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(typesetting_font.Face)")
 			return res0Obj
@@ -23064,26 +22169,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "opentype.Face.Font",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *opentype.Face
+			var arg0Val opentype.Face
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*opentype.Face)
-				if !ok {
+				if vc, ok := v.Value.(*opentype.Face); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*opentype.Face)//font: arg 1: expected native of type *opentype.Face")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*opentype.Face)//font: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*opentype.Face)//font: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Font()
+			res0 := arg0Val.Font()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*font.Font)")
 			return res0Obj
@@ -23093,21 +22192,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "paint.ColorOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *paint.ColorOp
+			var arg0Val paint.ColorOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*paint.ColorOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ColorOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ColorOp)//add: arg 1: expected native of type *paint.ColorOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*paint.ColorOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.ColorOp)//add: arg 1: expected native")
@@ -23115,9 +22208,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ColorOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -23131,7 +22224,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.ColorOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -23142,9 +22235,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.ColorOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.ColorOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ColorOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ColorOp)//color!: arg 1: expected native of type *paint.ColorOp")
 				}
@@ -23161,9 +22254,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ColorOp)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -23182,9 +22275,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.ColorOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.ColorOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ColorOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ColorOp)//color?: arg 1: expected native of type *paint.ColorOp")
 				}
@@ -23207,21 +22300,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "paint.ImageOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *paint.ImageOp
+			var arg0Val paint.ImageOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*paint.ImageOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ImageOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ImageOp)//add: arg 1: expected native of type *paint.ImageOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*paint.ImageOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.ImageOp)//add: arg 1: expected native")
@@ -23229,9 +22316,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ImageOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -23245,7 +22332,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.ImageOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -23256,9 +22343,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.ImageOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.ImageOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ImageOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ImageOp)//filter!: arg 1: expected native of type *paint.ImageOp")
 				}
@@ -23286,9 +22373,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg1.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*paint.ImageOp)//filter!: arg 2: expected native of type byte")
 						}
@@ -23310,9 +22397,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.ImageOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.ImageOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ImageOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ImageOp)//filter?: arg 1: expected native of type *paint.ImageOp")
 				}
@@ -23335,26 +22422,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "paint.ImageOp.Size",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *paint.ImageOp
+			var arg0Val paint.ImageOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*paint.ImageOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ImageOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.ImageOp)//size: arg 1: expected native of type *paint.ImageOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*paint.ImageOp)//size: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.ImageOp)//size: arg 1: expected native")
 			}
-			res0 := (*arg0Val).Size()
+			res0 := arg0Val.Size()
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(image.Point)")
 			return res0Obj
@@ -23364,21 +22445,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "paint.LinearGradientOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *paint.LinearGradientOp
+			var arg0Val paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//add: arg 1: expected native of type *paint.LinearGradientOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*paint.LinearGradientOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.LinearGradientOp)//add: arg 1: expected native")
@@ -23386,9 +22461,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -23402,7 +22477,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.LinearGradientOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -23413,9 +22488,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//color-1!: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23432,9 +22507,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//color-1!: arg 2: expected native of type color.NRGBA")
 				}
@@ -23453,9 +22528,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//color-1?: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23481,9 +22556,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//color-2!: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23500,9 +22575,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//color-2!: arg 2: expected native of type color.NRGBA")
 				}
@@ -23521,9 +22596,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//color-2?: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23549,9 +22624,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//stop-1!: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23568,9 +22643,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//stop-1!: arg 2: expected native of type *f32.Point")
 				}
@@ -23595,9 +22670,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//stop-1?: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23623,9 +22698,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//stop-2!: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23642,9 +22717,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//stop-2!: arg 2: expected native of type *f32.Point")
 				}
@@ -23669,9 +22744,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *paint.LinearGradientOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*paint.LinearGradientOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.LinearGradientOp); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.LinearGradientOp)//stop-2?: arg 1: expected native of type *paint.LinearGradientOp")
 				}
@@ -23694,26 +22769,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "paint.OpacityStack.Pop",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *paint.OpacityStack
+			var arg0Val paint.OpacityStack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*paint.OpacityStack)
-				if !ok {
+				if vc, ok := v.Value.(*paint.OpacityStack); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.OpacityStack)//pop: arg 1: expected native of type *paint.OpacityStack")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*paint.OpacityStack)//pop: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.OpacityStack)//pop: arg 1: expected native")
 			}
-			(*arg0Val).Pop()
+			arg0Val.Pop()
 			return arg0
 		},
 	},
@@ -23721,21 +22790,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "paint.PaintOp.Add",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *paint.PaintOp
+			var arg0Val paint.PaintOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*paint.PaintOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.PaintOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.PaintOp)//add: arg 1: expected native of type *paint.PaintOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*paint.PaintOp)//add: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.PaintOp)//add: arg 1: expected native")
@@ -23743,9 +22806,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*paint.PaintOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -23759,7 +22822,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*paint.PaintOp)//add: arg 2: expected native")
 			}
-			(*arg0Val).Add(arg1Val)
+			arg0Val.Add(arg1Val)
 			return arg0
 		},
 	},
@@ -23770,9 +22833,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//buttons!: arg 1: expected native of type *pointer.Event")
 				}
@@ -23818,9 +22881,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//buttons?: arg 1: expected native of type *pointer.Event")
 				}
@@ -23843,26 +22906,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "pointer.Event.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *pointer.Event
+			var arg0Val pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//implements-event: arg 1: expected native of type *pointer.Event")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.Event)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.Event)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -23873,9 +22930,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//kind!: arg 1: expected native of type *pointer.Event")
 				}
@@ -23921,9 +22978,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//kind?: arg 1: expected native of type *pointer.Event")
 				}
@@ -23949,9 +23006,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//modifiers!: arg 1: expected native of type *pointer.Event")
 				}
@@ -23997,9 +23054,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//modifiers?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24025,9 +23082,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//pointer-id!: arg 1: expected native of type *pointer.Event")
 				}
@@ -24073,9 +23130,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//pointer-id?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24101,9 +23158,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//position!: arg 1: expected native of type *pointer.Event")
 				}
@@ -24120,9 +23177,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//position!: arg 2: expected native of type *f32.Point")
 				}
@@ -24147,9 +23204,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//position?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24175,9 +23232,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//priority!: arg 1: expected native of type *pointer.Event")
 				}
@@ -24223,9 +23280,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//priority?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24251,9 +23308,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//scroll!: arg 1: expected native of type *pointer.Event")
 				}
@@ -24270,9 +23327,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//scroll!: arg 2: expected native of type *f32.Point")
 				}
@@ -24297,9 +23354,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//scroll?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24325,9 +23382,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//source!: arg 1: expected native of type *pointer.Event")
 				}
@@ -24373,9 +23430,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//source?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24401,9 +23458,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//time!: arg 1: expected native of type *pointer.Event")
 				}
@@ -24420,9 +23477,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal time.Duration
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(time.Duration)
-				if !ok {
+				if vc, ok := v.Value.(time.Duration); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//time!: arg 2: expected native of type time.Duration")
 				}
@@ -24441,9 +23498,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Event
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Event)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Event); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Event)//time?: arg 1: expected native of type *pointer.Event")
 				}
@@ -24466,26 +23523,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "pointer.Filter.ImplementsFilter",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *pointer.Filter
+			var arg0Val pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//implements-filter: arg 1: expected native of type *pointer.Filter")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.Filter)//implements-filter: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.Filter)//implements-filter: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsFilter()
+			arg0Val.ImplementsFilter()
 			return arg0
 		},
 	},
@@ -24496,9 +23547,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//kinds!: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24544,9 +23595,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//kinds?: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24572,9 +23623,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//scroll-x!: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24591,9 +23642,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *pointer.ScrollRange
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//scroll-x!: arg 2: expected native of type *pointer.ScrollRange")
 				}
@@ -24618,9 +23669,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//scroll-x?: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24646,9 +23697,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//scroll-y!: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24665,9 +23716,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *pointer.ScrollRange
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//scroll-y!: arg 2: expected native of type *pointer.ScrollRange")
 				}
@@ -24692,9 +23743,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//scroll-y?: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24720,9 +23771,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//target!: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24746,9 +23797,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*pointer.Filter)//target!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//target!: arg 2: expected native of type event.Tag")
 				}
@@ -24773,9 +23824,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.Filter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.Filter)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.Filter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.Filter)//target?: arg 1: expected native of type *pointer.Filter")
 				}
@@ -24801,9 +23852,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.GrabCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.GrabCmd)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.GrabCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.GrabCmd)//id!: arg 1: expected native of type *pointer.GrabCmd")
 				}
@@ -24849,9 +23900,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.GrabCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.GrabCmd)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.GrabCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.GrabCmd)//id?: arg 1: expected native of type *pointer.GrabCmd")
 				}
@@ -24874,26 +23925,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "pointer.GrabCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *pointer.GrabCmd
+			var arg0Val pointer.GrabCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*pointer.GrabCmd)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.GrabCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.GrabCmd)//implements-command: arg 1: expected native of type *pointer.GrabCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.GrabCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.GrabCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -24904,9 +23949,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.GrabCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.GrabCmd)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.GrabCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.GrabCmd)//tag!: arg 1: expected native of type *pointer.GrabCmd")
 				}
@@ -24930,9 +23975,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*pointer.GrabCmd)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.GrabCmd)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -24957,9 +24002,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.GrabCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.GrabCmd)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.GrabCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.GrabCmd)//tag?: arg 1: expected native of type *pointer.GrabCmd")
 				}
@@ -24982,21 +24027,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "pointer.PassOp.Push",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *pointer.PassOp
+			var arg0Val pointer.PassOp
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*pointer.PassOp)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.PassOp); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.PassOp)//push: arg 1: expected native of type *pointer.PassOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.PassOp)//push: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.PassOp)//push: arg 1: expected native")
@@ -25004,9 +24043,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.PassOp)//push: arg 2: expected native of type *op.Ops")
 				}
@@ -25020,7 +24059,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.PassOp)//push: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Push(arg1Val)
+			res0 := arg0Val.Push(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*pointer.PassStack)")
 			return res0Obj
@@ -25030,26 +24069,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "pointer.PassStack.Pop",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *pointer.PassStack
+			var arg0Val pointer.PassStack
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*pointer.PassStack)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.PassStack); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.PassStack)//pop: arg 1: expected native of type *pointer.PassStack")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.PassStack)//pop: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.PassStack)//pop: arg 1: expected native")
 			}
-			(*arg0Val).Pop()
+			arg0Val.Pop()
 			return arg0
 		},
 	},
@@ -25060,9 +24093,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.ScrollRange
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.ScrollRange)//max!: arg 1: expected native of type *pointer.ScrollRange")
 				}
@@ -25094,9 +24127,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.ScrollRange
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.ScrollRange)//max?: arg 1: expected native of type *pointer.ScrollRange")
 				}
@@ -25122,9 +24155,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.ScrollRange
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.ScrollRange)//min!: arg 1: expected native of type *pointer.ScrollRange")
 				}
@@ -25156,9 +24189,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *pointer.ScrollRange
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.ScrollRange)//min?: arg 1: expected native of type *pointer.ScrollRange")
 				}
@@ -25181,45 +24214,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "pointer.ScrollRange.Union",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *pointer.ScrollRange
+			var arg0Val pointer.ScrollRange
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.ScrollRange)//union: arg 1: expected native of type *pointer.ScrollRange")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.ScrollRange)//union: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.ScrollRange)//union: arg 1: expected native")
 			}
-			var arg1Val *pointer.ScrollRange
+			var arg1Val pointer.ScrollRange
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*pointer.ScrollRange)
-				if !ok {
+				if vc, ok := v.Value.(*pointer.ScrollRange); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*pointer.ScrollRange)//union: arg 2: expected native of type *pointer.ScrollRange")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*pointer.ScrollRange)//union: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*pointer.ScrollRange)//union: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Union(*arg1Val)
+			res0 := arg0Val.Union(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*pointer.ScrollRange)")
 			return res0Obj
@@ -25232,9 +24253,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *system.Locale
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*system.Locale)
-				if !ok {
+				if vc, ok := v.Value.(*system.Locale); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*system.Locale)//direction!: arg 1: expected native of type *system.Locale")
 				}
@@ -25262,9 +24283,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg1.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*system.Locale)//direction!: arg 2: expected native of type byte")
 						}
@@ -25286,9 +24307,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *system.Locale
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*system.Locale)
-				if !ok {
+				if vc, ok := v.Value.(*system.Locale); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*system.Locale)//direction?: arg 1: expected native of type *system.Locale")
 				}
@@ -25314,9 +24335,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *system.Locale
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*system.Locale)
-				if !ok {
+				if vc, ok := v.Value.(*system.Locale); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*system.Locale)//language!: arg 1: expected native of type *system.Locale")
 				}
@@ -25348,9 +24369,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *system.Locale
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*system.Locale)
-				if !ok {
+				if vc, ok := v.Value.(*system.Locale); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*system.Locale)//language?: arg 1: expected native of type *system.Locale")
 				}
@@ -25376,9 +24397,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//advance!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25395,9 +24416,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Int26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//advance!: arg 2: expected native of type fixed.Int26_6")
 				}
@@ -25416,9 +24437,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//advance?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25444,9 +24465,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//ascent!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25463,9 +24484,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Int26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//ascent!: arg 2: expected native of type fixed.Int26_6")
 				}
@@ -25484,9 +24505,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//ascent?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25512,9 +24533,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//bounds!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25531,9 +24552,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Rectangle26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Rectangle26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Rectangle26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//bounds!: arg 2: expected native of type fixed.Rectangle26_6")
 				}
@@ -25552,9 +24573,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//bounds?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25580,9 +24601,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//descent!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25599,9 +24620,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Int26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//descent!: arg 2: expected native of type fixed.Int26_6")
 				}
@@ -25620,9 +24641,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//descent?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25648,9 +24669,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//flags!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25696,9 +24717,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//flags?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25724,9 +24745,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//id!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25772,9 +24793,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//id?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25800,9 +24821,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//offset!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25819,9 +24840,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Point26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Point26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Point26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//offset!: arg 2: expected native of type fixed.Point26_6")
 				}
@@ -25840,9 +24861,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//offset?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25868,9 +24889,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//runes!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25902,9 +24923,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//runes?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25930,9 +24951,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//x!: arg 1: expected native of type *text.Glyph")
 				}
@@ -25949,9 +24970,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Int26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//x!: arg 2: expected native of type fixed.Int26_6")
 				}
@@ -25970,9 +24991,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//x?: arg 1: expected native of type *text.Glyph")
 				}
@@ -25998,9 +25019,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//y!: arg 1: expected native of type *text.Glyph")
 				}
@@ -26032,9 +25053,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Glyph
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Glyph)
-				if !ok {
+				if vc, ok := v.Value.(*text.Glyph); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Glyph)//y?: arg 1: expected native of type *text.Glyph")
 				}
@@ -26060,9 +25081,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//alignment!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26108,9 +25129,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//alignment?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26136,9 +25157,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//font!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26155,9 +25176,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *font.Font
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//font!: arg 2: expected native of type *font.Font")
 				}
@@ -26182,9 +25203,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//font?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26210,9 +25231,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//line-height!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26229,9 +25250,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Int26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//line-height!: arg 2: expected native of type fixed.Int26_6")
 				}
@@ -26250,9 +25271,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//line-height-scale!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26284,9 +25305,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//line-height-scale?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26312,9 +25333,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//line-height?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26340,9 +25361,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//locale!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26359,9 +25380,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *system.Locale
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*system.Locale)
-				if !ok {
+				if vc, ok := v.Value.(*system.Locale); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//locale!: arg 2: expected native of type *system.Locale")
 				}
@@ -26386,9 +25407,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//locale?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26414,9 +25435,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//max-lines!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26448,9 +25469,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//max-lines?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26476,9 +25497,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//max-width!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26510,9 +25531,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//max-width?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26538,9 +25559,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//min-width!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26572,9 +25593,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//min-width?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26600,9 +25621,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//px-per-em!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26619,9 +25640,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal fixed.Int26_6
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//px-per-em!: arg 2: expected native of type fixed.Int26_6")
 				}
@@ -26640,9 +25661,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//px-per-em?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26668,9 +25689,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//truncator!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26702,9 +25723,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//truncator?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26730,9 +25751,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//wrap-policy!: arg 1: expected native of type *text.Parameters")
 				}
@@ -26778,9 +25799,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Parameters
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Parameters)//wrap-policy?: arg 1: expected native of type *text.Parameters")
 				}
@@ -26806,9 +25827,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Range)
-				if !ok {
+				if vc, ok := v.Value.(*text.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Range)//count!: arg 1: expected native of type *text.Range")
 				}
@@ -26840,9 +25861,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Range)
-				if !ok {
+				if vc, ok := v.Value.(*text.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Range)//count?: arg 1: expected native of type *text.Range")
 				}
@@ -26868,9 +25889,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Range)
-				if !ok {
+				if vc, ok := v.Value.(*text.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Range)//offset!: arg 1: expected native of type *text.Range")
 				}
@@ -26902,9 +25923,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *text.Range
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*text.Range)
-				if !ok {
+				if vc, ok := v.Value.(*text.Range); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Range)//offset?: arg 1: expected native of type *text.Range")
 				}
@@ -26930,9 +25951,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *text.Shaper
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//bitmaps: arg 1: expected native of type *text.Shaper")
 				}
@@ -26953,23 +25974,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(text.Glyph)
-						if !ok {
+						if vc, ok := v.Value.(*text.Glyph); ok {
+							arg1Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*text.Shaper)//bitmaps: arg 2: block item: expected native of type text.Glyph")
+							return env.NewError("Go(*text.Shaper)//bitmaps: arg 2: block item: expected native of type *text.Glyph")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*text.Shaper)//bitmaps: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]text.Glyph)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*text.Shaper)//bitmaps: arg 2: expected native of type []text.Glyph")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -26994,9 +26008,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *text.Shaper
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//layout: arg 1: expected native of type *text.Shaper")
 				}
@@ -27010,21 +26024,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*text.Shaper)//layout: arg 1: expected native")
 			}
-			var arg1Val *text.Parameters
+			var arg1Val text.Parameters
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//layout: arg 2: expected native of type *text.Parameters")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*text.Shaper)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*text.Shaper)//layout: arg 2: expected native")
@@ -27032,9 +26040,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg2Val io.Reader
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(io.Reader)
-				if !ok {
+				if vc, ok := v.Value.(io.Reader); ok {
+					arg2Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//layout: arg 3: expected native of type io.Reader")
 				}
@@ -27042,7 +26050,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*text.Shaper)//layout: arg 3: expected native")
 			}
-			arg0Val.Layout(*arg1Val, arg2Val)
+			arg0Val.Layout(arg1Val, arg2Val)
 			return arg0
 		},
 	},
@@ -27053,9 +26061,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *text.Shaper
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//layout-string: arg 1: expected native of type *text.Shaper")
 				}
@@ -27069,21 +26077,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*text.Shaper)//layout-string: arg 1: expected native")
 			}
-			var arg1Val *text.Parameters
+			var arg1Val text.Parameters
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*text.Parameters)
-				if !ok {
+				if vc, ok := v.Value.(*text.Parameters); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//layout-string: arg 2: expected native of type *text.Parameters")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*text.Shaper)//layout-string: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*text.Shaper)//layout-string: arg 2: expected native")
@@ -27095,7 +26097,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*text.Shaper)//layout-string: arg 3: expected string")
 			}
-			arg0Val.LayoutString(*arg1Val, arg2Val)
+			arg0Val.LayoutString(arg1Val, arg2Val)
 			return arg0
 		},
 	},
@@ -27106,9 +26108,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *text.Shaper
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//next-glyph: arg 1: expected native of type *text.Shaper")
 				}
@@ -27140,9 +26142,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *text.Shaper
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*text.Shaper)
-				if !ok {
+				if vc, ok := v.Value.(*text.Shaper); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*text.Shaper)//shape: arg 1: expected native of type *text.Shaper")
 				}
@@ -27163,23 +26165,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(text.Glyph)
-						if !ok {
+						if vc, ok := v.Value.(*text.Glyph); ok {
+							arg1Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*text.Shaper)//shape: arg 2: block item: expected native of type text.Glyph")
+							return env.NewError("Go(*text.Shaper)//shape: arg 2: block item: expected native of type *text.Glyph")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*text.Shaper)//shape: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]text.Glyph)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*text.Shaper)//shape: arg 2: expected native of type []text.Glyph")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -27201,26 +26196,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.CancelEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.CancelEvent
+			var arg0Val transfer.CancelEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.CancelEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.CancelEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.CancelEvent)//implements-event: arg 1: expected native of type *transfer.CancelEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.CancelEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.CancelEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -27228,26 +26217,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.DataEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.DataEvent
+			var arg0Val transfer.DataEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.DataEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.DataEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.DataEvent)//implements-event: arg 1: expected native of type *transfer.DataEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.DataEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.DataEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -27258,9 +26241,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.DataEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.DataEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.DataEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.DataEvent)//open!: arg 1: expected native of type *transfer.DataEvent")
 				}
@@ -27288,9 +26271,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var res io.ReadCloser
 					switch v := ps.Res.(type) {
 					case env.Native:
-						var ok bool
-						res, ok = v.Value.(io.ReadCloser)
-						if !ok {
+						if vc, ok := v.Value.(io.ReadCloser); ok {
+							res = vc
+						} else {
 							fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 								"Go(*transfer.DataEvent)//open!: arg 2: callback result: expected native of type io.ReadCloser",
 								actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
@@ -27329,9 +26312,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.DataEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.DataEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.DataEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.DataEvent)//open?: arg 1: expected native of type *transfer.DataEvent")
 				}
@@ -27362,9 +26345,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.DataEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.DataEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.DataEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.DataEvent)//type!: arg 1: expected native of type *transfer.DataEvent")
 				}
@@ -27396,9 +26379,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.DataEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.DataEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.DataEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.DataEvent)//type?: arg 1: expected native of type *transfer.DataEvent")
 				}
@@ -27421,26 +26404,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.InitiateEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.InitiateEvent
+			var arg0Val transfer.InitiateEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.InitiateEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.InitiateEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.InitiateEvent)//implements-event: arg 1: expected native of type *transfer.InitiateEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.InitiateEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.InitiateEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -27451,9 +26428,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//data!: arg 1: expected native of type *transfer.OfferCmd")
 				}
@@ -27470,9 +26447,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal io.ReadCloser
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(io.ReadCloser)
-				if !ok {
+				if vc, ok := v.Value.(io.ReadCloser); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//data!: arg 2: expected native of type io.ReadCloser")
 				}
@@ -27491,9 +26468,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//data?: arg 1: expected native of type *transfer.OfferCmd")
 				}
@@ -27516,26 +26493,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.OfferCmd.ImplementsCommand",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.OfferCmd
+			var arg0Val transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//implements-command: arg 1: expected native of type *transfer.OfferCmd")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.OfferCmd)//implements-command: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.OfferCmd)//implements-command: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsCommand()
+			arg0Val.ImplementsCommand()
 			return arg0
 		},
 	},
@@ -27546,9 +26517,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//tag!: arg 1: expected native of type *transfer.OfferCmd")
 				}
@@ -27572,9 +26543,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*transfer.OfferCmd)//tag!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//tag!: arg 2: expected native of type event.Tag")
 				}
@@ -27599,9 +26570,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//tag?: arg 1: expected native of type *transfer.OfferCmd")
 				}
@@ -27627,9 +26598,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//type!: arg 1: expected native of type *transfer.OfferCmd")
 				}
@@ -27661,9 +26632,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.OfferCmd
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.OfferCmd)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.OfferCmd); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.OfferCmd)//type?: arg 1: expected native of type *transfer.OfferCmd")
 				}
@@ -27686,26 +26657,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.RequestEvent.ImplementsEvent",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.RequestEvent
+			var arg0Val transfer.RequestEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.RequestEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.RequestEvent); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.RequestEvent)//implements-event: arg 1: expected native of type *transfer.RequestEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.RequestEvent)//implements-event: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.RequestEvent)//implements-event: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsEvent()
+			arg0Val.ImplementsEvent()
 			return arg0
 		},
 	},
@@ -27716,9 +26681,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.RequestEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.RequestEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.RequestEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.RequestEvent)//type!: arg 1: expected native of type *transfer.RequestEvent")
 				}
@@ -27750,9 +26715,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.RequestEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.RequestEvent)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.RequestEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.RequestEvent)//type?: arg 1: expected native of type *transfer.RequestEvent")
 				}
@@ -27775,26 +26740,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.SourceFilter.ImplementsFilter",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.SourceFilter
+			var arg0Val transfer.SourceFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.SourceFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.SourceFilter); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.SourceFilter)//implements-filter: arg 1: expected native of type *transfer.SourceFilter")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.SourceFilter)//implements-filter: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.SourceFilter)//implements-filter: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsFilter()
+			arg0Val.ImplementsFilter()
 			return arg0
 		},
 	},
@@ -27805,9 +26764,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.SourceFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.SourceFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.SourceFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.SourceFilter)//target!: arg 1: expected native of type *transfer.SourceFilter")
 				}
@@ -27831,9 +26790,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*transfer.SourceFilter)//target!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.SourceFilter)//target!: arg 2: expected native of type event.Tag")
 				}
@@ -27858,9 +26817,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.SourceFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.SourceFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.SourceFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.SourceFilter)//target?: arg 1: expected native of type *transfer.SourceFilter")
 				}
@@ -27886,9 +26845,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.SourceFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.SourceFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.SourceFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.SourceFilter)//type!: arg 1: expected native of type *transfer.SourceFilter")
 				}
@@ -27920,9 +26879,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.SourceFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.SourceFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.SourceFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.SourceFilter)//type?: arg 1: expected native of type *transfer.SourceFilter")
 				}
@@ -27945,26 +26904,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "transfer.TargetFilter.ImplementsFilter",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *transfer.TargetFilter
+			var arg0Val transfer.TargetFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*transfer.TargetFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.TargetFilter); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.TargetFilter)//implements-filter: arg 1: expected native of type *transfer.TargetFilter")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*transfer.TargetFilter)//implements-filter: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*transfer.TargetFilter)//implements-filter: arg 1: expected native")
 			}
-			(*arg0Val).ImplementsFilter()
+			arg0Val.ImplementsFilter()
 			return arg0
 		},
 	},
@@ -27975,9 +26928,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.TargetFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.TargetFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.TargetFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.TargetFilter)//target!: arg 1: expected native of type *transfer.TargetFilter")
 				}
@@ -28001,9 +26954,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(*transfer.TargetFilter)//target!: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.TargetFilter)//target!: arg 2: expected native of type event.Tag")
 				}
@@ -28028,9 +26981,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.TargetFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.TargetFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.TargetFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.TargetFilter)//target?: arg 1: expected native of type *transfer.TargetFilter")
 				}
@@ -28056,9 +27009,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.TargetFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.TargetFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.TargetFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.TargetFilter)//type!: arg 1: expected native of type *transfer.TargetFilter")
 				}
@@ -28090,9 +27043,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *transfer.TargetFilter
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*transfer.TargetFilter)
-				if !ok {
+				if vc, ok := v.Value.(*transfer.TargetFilter); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*transfer.TargetFilter)//type?: arg 1: expected native of type *transfer.TargetFilter")
 				}
@@ -28115,21 +27068,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "unit.Metric.Dp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *unit.Metric
+			var arg0Val unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//dp: arg 1: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*unit.Metric)//dp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//dp: arg 1: expected native")
@@ -28155,7 +27102,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg1Val = unit.Dp(u)
 				}
 			}
-			res0 := (*arg0Val).Dp(arg1Val)
+			res0 := arg0Val.Dp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(res0))
 			return res0Obj
@@ -28165,21 +27112,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "unit.Metric.DpToSp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *unit.Metric
+			var arg0Val unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//dp-to-sp: arg 1: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*unit.Metric)//dp-to-sp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//dp-to-sp: arg 1: expected native")
@@ -28205,7 +27146,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg1Val = unit.Dp(u)
 				}
 			}
-			res0 := (*arg0Val).DpToSp(arg1Val)
+			res0 := arg0Val.DpToSp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(unit.Sp)")
 			return res0Obj
@@ -28218,9 +27159,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//px-per-dp!: arg 1: expected native of type *unit.Metric")
 				}
@@ -28252,9 +27193,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//px-per-dp?: arg 1: expected native of type *unit.Metric")
 				}
@@ -28280,9 +27221,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//px-per-sp!: arg 1: expected native of type *unit.Metric")
 				}
@@ -28314,9 +27255,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//px-per-sp?: arg 1: expected native of type *unit.Metric")
 				}
@@ -28339,21 +27280,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "unit.Metric.PxToDp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *unit.Metric
+			var arg0Val unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//px-to-dp: arg 1: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*unit.Metric)//px-to-dp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//px-to-dp: arg 1: expected native")
@@ -28365,7 +27300,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//px-to-dp: arg 2: expected integer")
 			}
-			res0 := (*arg0Val).PxToDp(arg1Val)
+			res0 := arg0Val.PxToDp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewDecimal(float64(float32(res0)))
 			return res0Obj
@@ -28375,21 +27310,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "unit.Metric.PxToSp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *unit.Metric
+			var arg0Val unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//px-to-sp: arg 1: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*unit.Metric)//px-to-sp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//px-to-sp: arg 1: expected native")
@@ -28401,7 +27330,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//px-to-sp: arg 2: expected integer")
 			}
-			res0 := (*arg0Val).PxToSp(arg1Val)
+			res0 := arg0Val.PxToSp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(unit.Sp)")
 			return res0Obj
@@ -28411,21 +27340,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "unit.Metric.Sp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *unit.Metric
+			var arg0Val unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//sp: arg 1: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*unit.Metric)//sp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//sp: arg 1: expected native")
@@ -28433,9 +27356,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//sp: arg 2: expected native of type unit.Sp")
 				}
@@ -28443,7 +27366,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//sp: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Sp(arg1Val)
+			res0 := arg0Val.Sp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(res0))
 			return res0Obj
@@ -28453,21 +27376,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "unit.Metric.SpToDp",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *unit.Metric
+			var arg0Val unit.Metric
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*unit.Metric)
-				if !ok {
+				if vc, ok := v.Value.(*unit.Metric); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//sp-to-dp: arg 1: expected native of type *unit.Metric")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*unit.Metric)//sp-to-dp: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//sp-to-dp: arg 1: expected native")
@@ -28475,9 +27392,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*unit.Metric)//sp-to-dp: arg 2: expected native of type unit.Sp")
 				}
@@ -28485,7 +27402,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*unit.Metric)//sp-to-dp: arg 2: expected native")
 			}
-			res0 := (*arg0Val).SpToDp(arg1Val)
+			res0 := arg0Val.SpToDp(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewDecimal(float64(float32(res0)))
 			return res0Obj
@@ -28498,9 +27415,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//history: arg 1: expected native of type *widget.Bool")
 				}
@@ -28519,7 +27436,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(widget.Press)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*widget.Press)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -28533,9 +27450,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//hovered: arg 1: expected native of type *widget.Bool")
 				}
@@ -28562,9 +27479,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//layout: arg 1: expected native of type *widget.Bool")
 				}
@@ -28578,21 +27495,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Bool)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Bool)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Bool)//layout: arg 2: expected native")
@@ -28624,11 +27535,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Bool)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Bool)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -28657,7 +27568,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -28670,9 +27581,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//pressed: arg 1: expected native of type *widget.Bool")
 				}
@@ -28699,9 +27610,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//update: arg 1: expected native of type *widget.Bool")
 				}
@@ -28715,26 +27626,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Bool)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Bool)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Bool)//update: arg 2: expected native")
 			}
-			res0 := arg0Val.Update(*arg1Val)
+			res0 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -28747,9 +27652,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//value!: arg 1: expected native of type *widget.Bool")
 				}
@@ -28781,9 +27686,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Bool
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Bool)//value?: arg 1: expected native of type *widget.Bool")
 				}
@@ -28809,9 +27714,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//color!: arg 1: expected native of type *widget.Border")
 				}
@@ -28828,9 +27733,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//color!: arg 2: expected native of type color.NRGBA")
 				}
@@ -28849,9 +27754,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//color?: arg 1: expected native of type *widget.Border")
 				}
@@ -28877,9 +27782,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//corner-radius!: arg 1: expected native of type *widget.Border")
 				}
@@ -28925,9 +27830,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//corner-radius?: arg 1: expected native of type *widget.Border")
 				}
@@ -28950,40 +27855,28 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "widget.Border.Layout",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *widget.Border
+			var arg0Val widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//layout: arg 1: expected native of type *widget.Border")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Border)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Border)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Border)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Border)//layout: arg 2: expected native")
@@ -29015,11 +27908,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Border)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Border)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -29048,7 +27941,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := (*arg0Val).Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -29061,9 +27954,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//width!: arg 1: expected native of type *widget.Border")
 				}
@@ -29109,9 +28002,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Border
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Border)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Border); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Border)//width?: arg 1: expected native of type *widget.Border")
 				}
@@ -29137,9 +28030,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Click)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Click); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Click)//modifiers!: arg 1: expected native of type *widget.Click")
 				}
@@ -29185,9 +28078,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Click)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Click); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Click)//modifiers?: arg 1: expected native of type *widget.Click")
 				}
@@ -29213,9 +28106,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Click)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Click); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Click)//num-clicks!: arg 1: expected native of type *widget.Click")
 				}
@@ -29247,9 +28140,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Click
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Click)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Click); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Click)//num-clicks?: arg 1: expected native of type *widget.Click")
 				}
@@ -29275,9 +28168,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//click: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29302,9 +28195,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//clicked: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29318,26 +28211,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Clickable)//clicked: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//clicked: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Clickable)//clicked: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Clickable)//clicked: arg 2: expected native")
 			}
-			res0 := arg0Val.Clicked(*arg1Val)
+			res0 := arg0Val.Clicked(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -29350,9 +28237,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//history: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29371,7 +28258,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(widget.Press)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*widget.Press)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -29385,9 +28272,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//hovered: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29414,9 +28301,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//layout: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29430,21 +28317,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Clickable)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Clickable)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Clickable)//layout: arg 2: expected native")
@@ -29476,11 +28357,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Clickable)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Clickable)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -29509,7 +28390,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -29522,9 +28403,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//pressed: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29551,9 +28432,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Clickable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//update: arg 1: expected native of type *widget.Clickable")
 				}
@@ -29567,26 +28448,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Clickable)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Clickable)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Clickable)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Clickable)//update: arg 2: expected native")
 			}
-			res0, res1 := arg0Val.Update(*arg1Val)
+			res0, res1 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*widget.Click)")
 			var res1Obj env.Object
@@ -29604,9 +28479,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Decorations
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//clickable: arg 1: expected native of type *widget.Decorations")
 				}
@@ -29654,9 +28529,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Decorations
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//layout-move: arg 1: expected native of type *widget.Decorations")
 				}
@@ -29670,21 +28545,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Decorations)//layout-move: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//layout-move: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Decorations)//layout-move: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Decorations)//layout-move: arg 2: expected native")
@@ -29716,11 +28585,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Decorations)//layout-move: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Decorations)//layout-move: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -29749,7 +28618,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := arg0Val.LayoutMove(*arg1Val, arg2Val)
+			res0 := arg0Val.LayoutMove(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -29762,9 +28631,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Decorations
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//maximized: arg 1: expected native of type *widget.Decorations")
 				}
@@ -29791,9 +28660,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Decorations
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//perform: arg 1: expected native of type *widget.Decorations")
 				}
@@ -29839,9 +28708,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Decorations
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//update: arg 1: expected native of type *widget.Decorations")
 				}
@@ -29855,26 +28724,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Decorations)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Decorations)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Decorations)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Decorations)//update: arg 2: expected native")
 			}
-			res0 := arg0Val.Update(*arg1Val)
+			res0 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(int64(uint(res0)))
 			return res0Obj
@@ -29887,9 +28750,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//dragging: arg 1: expected native of type *widget.Draggable")
 				}
@@ -29916,9 +28779,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//layout: arg 1: expected native of type *widget.Draggable")
 				}
@@ -29932,21 +28795,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Draggable)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//layout: arg 2: expected native")
@@ -29978,11 +28835,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Draggable)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Draggable)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -30038,11 +28895,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Draggable)//layout: arg 4: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Draggable)//layout: arg 4: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -30071,7 +28928,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = layout.Widget(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -30084,9 +28941,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//offer: arg 1: expected native of type *widget.Draggable")
 				}
@@ -30100,21 +28957,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//offer: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//offer: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Draggable)//offer: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//offer: arg 2: expected native")
@@ -30129,9 +28980,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg3Val io.ReadCloser
 			switch v := arg3.(type) {
 			case env.Native:
-				var ok bool
-				arg3Val, ok = v.Value.(io.ReadCloser)
-				if !ok {
+				if vc, ok := v.Value.(io.ReadCloser); ok {
+					arg3Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//offer: arg 4: expected native of type io.ReadCloser")
 				}
@@ -30139,7 +28990,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//offer: arg 4: expected native")
 			}
-			arg0Val.Offer(*arg1Val, arg2Val, arg3Val)
+			arg0Val.Offer(arg1Val, arg2Val, arg3Val)
 			return arg0
 		},
 	},
@@ -30150,9 +29001,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//pos: arg 1: expected native of type *widget.Draggable")
 				}
@@ -30179,9 +29030,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//type!: arg 1: expected native of type *widget.Draggable")
 				}
@@ -30213,9 +29064,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//type?: arg 1: expected native of type *widget.Draggable")
 				}
@@ -30241,9 +29092,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Draggable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Draggable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Draggable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//update: arg 1: expected native of type *widget.Draggable")
 				}
@@ -30257,26 +29108,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Draggable)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Draggable)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Draggable)//update: arg 2: expected native")
 			}
-			res0, res1 := arg0Val.Update(*arg1Val)
+			res0, res1 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewString(res0)
 			var res1Obj env.Object
@@ -30294,9 +29139,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//alignment!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30342,9 +29187,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//alignment?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30370,9 +29215,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//caret-coords: arg 1: expected native of type *widget.Editor")
 				}
@@ -30399,9 +29244,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//caret-pos: arg 1: expected native of type *widget.Editor")
 				}
@@ -30433,9 +29278,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//clear-selection: arg 1: expected native of type *widget.Editor")
 				}
@@ -30460,9 +29305,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//delete: arg 1: expected native of type *widget.Editor")
 				}
@@ -30496,9 +29341,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//filter!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30530,9 +29375,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//filter?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30558,9 +29403,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//input-hint!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30606,9 +29451,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//input-hint?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30634,9 +29479,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//insert: arg 1: expected native of type *widget.Editor")
 				}
@@ -30670,9 +29515,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//len: arg 1: expected native of type *widget.Editor")
 				}
@@ -30699,9 +29544,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//line-height!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30718,9 +29563,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//line-height!: arg 2: expected native of type unit.Sp")
 				}
@@ -30739,9 +29584,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//line-height-scale!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30773,9 +29618,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//line-height-scale?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30801,9 +29646,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//line-height?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30829,9 +29674,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//mask!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30848,9 +29693,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal rune
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(rune)
-				if !ok {
+				if vc, ok := v.Value.(rune); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//mask!: arg 2: expected native of type rune")
 				}
@@ -30869,9 +29714,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//mask?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30897,9 +29742,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//max-len!: arg 1: expected native of type *widget.Editor")
 				}
@@ -30931,9 +29776,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//max-len?: arg 1: expected native of type *widget.Editor")
 				}
@@ -30959,9 +29804,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//move-caret: arg 1: expected native of type *widget.Editor")
 				}
@@ -31000,9 +29845,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//read: arg 1: expected native of type *widget.Editor")
 				}
@@ -31023,9 +29868,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg1Val[i], ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							arg1Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(*widget.Editor)//read: arg 2: block item: expected native of type byte")
 						}
@@ -31033,13 +29878,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						ps.FailureFlag = true
 						return env.NewError("Go(*widget.Editor)//read: arg 2: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.([]byte)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Editor)//read: arg 2: expected native of type []byte")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -31072,9 +29910,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//read-only!: arg 1: expected native of type *widget.Editor")
 				}
@@ -31106,9 +29944,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//read-only?: arg 1: expected native of type *widget.Editor")
 				}
@@ -31134,9 +29972,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//regions: arg 1: expected native of type *widget.Editor")
 				}
@@ -31171,23 +30009,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg3Val[i], ok = v.Value.(widget.Region)
-						if !ok {
+						if vc, ok := v.Value.(*widget.Region); ok {
+							arg3Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*widget.Editor)//regions: arg 4: block item: expected native of type widget.Region")
+							return env.NewError("Go(*widget.Editor)//regions: arg 4: block item: expected native of type *widget.Region")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*widget.Editor)//regions: arg 4: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg3Val, ok = v.Value.([]widget.Region)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Editor)//regions: arg 4: expected native of type []widget.Region")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -31204,7 +30035,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(widget.Region)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*widget.Region)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -31218,9 +30049,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//seek: arg 1: expected native of type *widget.Editor")
 				}
@@ -31269,9 +30100,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//selected-text: arg 1: expected native of type *widget.Editor")
 				}
@@ -31298,9 +30129,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//selection: arg 1: expected native of type *widget.Editor")
 				}
@@ -31332,9 +30163,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//selection-len: arg 1: expected native of type *widget.Editor")
 				}
@@ -31361,9 +30192,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//set-caret: arg 1: expected native of type *widget.Editor")
 				}
@@ -31402,9 +30233,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//set-text: arg 1: expected native of type *widget.Editor")
 				}
@@ -31436,9 +30267,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//single-line!: arg 1: expected native of type *widget.Editor")
 				}
@@ -31470,9 +30301,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//single-line?: arg 1: expected native of type *widget.Editor")
 				}
@@ -31498,9 +30329,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//submit!: arg 1: expected native of type *widget.Editor")
 				}
@@ -31532,9 +30363,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//submit?: arg 1: expected native of type *widget.Editor")
 				}
@@ -31560,9 +30391,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//text: arg 1: expected native of type *widget.Editor")
 				}
@@ -31589,9 +30420,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//update: arg 1: expected native of type *widget.Editor")
 				}
@@ -31605,26 +30436,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Editor)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Editor)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Editor)//update: arg 2: expected native")
 			}
-			res0, res1 := arg0Val.Update(*arg1Val)
+			res0, res1 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = ifaceToNative(ps.Idx, res0, "Go(widget.EditorEvent)")
 			var res1Obj env.Object
@@ -31642,9 +30467,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//wrap-policy!: arg 1: expected native of type *widget.Editor")
 				}
@@ -31690,9 +30515,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//wrap-policy?: arg 1: expected native of type *widget.Editor")
 				}
@@ -31718,9 +30543,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Editor
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//write-to: arg 1: expected native of type *widget.Editor")
 				}
@@ -31737,9 +30562,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val io.Writer
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(io.Writer)
-				if !ok {
+				if vc, ok := v.Value.(io.Writer); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Editor)//write-to: arg 2: expected native of type io.Writer")
 				}
@@ -31768,9 +30593,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Enum
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//focused: arg 1: expected native of type *widget.Enum")
 				}
@@ -31802,9 +30627,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Enum
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//hovered: arg 1: expected native of type *widget.Enum")
 				}
@@ -31836,9 +30661,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Enum
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//layout: arg 1: expected native of type *widget.Enum")
 				}
@@ -31852,21 +30677,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Enum)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Enum)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Enum)//layout: arg 2: expected native")
@@ -31905,11 +30724,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.Enum)//layout: arg 4: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.Enum)//layout: arg 4: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -31938,7 +30757,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = layout.Widget(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -31951,9 +30770,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Enum
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//update: arg 1: expected native of type *widget.Enum")
 				}
@@ -31967,26 +30786,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Enum)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Enum)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Enum)//update: arg 2: expected native")
 			}
-			res0 := arg0Val.Update(*arg1Val)
+			res0 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -31999,9 +30812,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Enum
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//value!: arg 1: expected native of type *widget.Enum")
 				}
@@ -32033,9 +30846,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Enum
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Enum)//value?: arg 1: expected native of type *widget.Enum")
 				}
@@ -32061,9 +30874,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Float
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//dragging: arg 1: expected native of type *widget.Float")
 				}
@@ -32090,9 +30903,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Float
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//layout: arg 1: expected native of type *widget.Float")
 				}
@@ -32106,21 +30919,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Float)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Float)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Float)//layout: arg 2: expected native")
@@ -32167,7 +30974,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = unit.Dp(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -32180,9 +30987,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Float
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//update: arg 1: expected native of type *widget.Float")
 				}
@@ -32196,26 +31003,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Float)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Float)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Float)//update: arg 2: expected native")
 			}
-			res0 := arg0Val.Update(*arg1Val)
+			res0 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -32228,9 +31029,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Float
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//value!: arg 1: expected native of type *widget.Float")
 				}
@@ -32262,9 +31063,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Float
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Float)//value?: arg 1: expected native of type *widget.Float")
 				}
@@ -32290,9 +31091,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Icon
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Icon)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Icon); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Icon)//layout: arg 1: expected native of type *widget.Icon")
 				}
@@ -32306,21 +31107,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Icon)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Icon)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Icon)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Icon)//layout: arg 2: expected native")
@@ -32328,9 +31123,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg2Val color.NRGBA
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					arg2Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Icon)//layout: arg 3: expected native of type color.NRGBA")
 				}
@@ -32338,7 +31133,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Icon)//layout: arg 3: expected native")
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -32351,9 +31146,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//fit!: arg 1: expected native of type *widget.Image")
 				}
@@ -32399,9 +31194,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//fit?: arg 1: expected native of type *widget.Image")
 				}
@@ -32424,45 +31219,33 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "widget.Image.Layout",
 		Argsn: 2,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *widget.Image
+			var arg0Val widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//layout: arg 1: expected native of type *widget.Image")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Image)//layout: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Image)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Image)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Image)//layout: arg 2: expected native")
 			}
-			res0 := (*arg0Val).Layout(*arg1Val)
+			res0 := arg0Val.Layout(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -32475,9 +31258,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//position!: arg 1: expected native of type *widget.Image")
 				}
@@ -32523,9 +31306,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//position?: arg 1: expected native of type *widget.Image")
 				}
@@ -32551,9 +31334,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//scale!: arg 1: expected native of type *widget.Image")
 				}
@@ -32585,9 +31368,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//scale?: arg 1: expected native of type *widget.Image")
 				}
@@ -32613,9 +31396,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//src!: arg 1: expected native of type *widget.Image")
 				}
@@ -32632,9 +31415,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *paint.ImageOp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*paint.ImageOp)
-				if !ok {
+				if vc, ok := v.Value.(*paint.ImageOp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//src!: arg 2: expected native of type *paint.ImageOp")
 				}
@@ -32659,9 +31442,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Image)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Image); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Image)//src?: arg 1: expected native of type *widget.Image")
 				}
@@ -32687,9 +31470,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//alignment!: arg 1: expected native of type *widget.Label")
 				}
@@ -32735,9 +31518,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//alignment?: arg 1: expected native of type *widget.Label")
 				}
@@ -32763,9 +31546,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//line-height!: arg 1: expected native of type *widget.Label")
 				}
@@ -32782,9 +31565,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//line-height!: arg 2: expected native of type unit.Sp")
 				}
@@ -32803,9 +31586,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//line-height-scale!: arg 1: expected native of type *widget.Label")
 				}
@@ -32837,9 +31620,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//line-height-scale?: arg 1: expected native of type *widget.Label")
 				}
@@ -32865,9 +31648,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//line-height?: arg 1: expected native of type *widget.Label")
 				}
@@ -32893,9 +31676,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//max-lines!: arg 1: expected native of type *widget.Label")
 				}
@@ -32927,9 +31710,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//max-lines?: arg 1: expected native of type *widget.Label")
 				}
@@ -32955,9 +31738,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//truncator!: arg 1: expected native of type *widget.Label")
 				}
@@ -32989,9 +31772,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//truncator?: arg 1: expected native of type *widget.Label")
 				}
@@ -33017,9 +31800,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//wrap-policy!: arg 1: expected native of type *widget.Label")
 				}
@@ -33065,9 +31848,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Label
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Label)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Label); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Label)//wrap-policy?: arg 1: expected native of type *widget.Label")
 				}
@@ -33093,9 +31876,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//add-drag: arg 1: expected native of type *widget.List")
 				}
@@ -33112,9 +31895,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//add-drag: arg 2: expected native of type *op.Ops")
 				}
@@ -33139,9 +31922,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//add-indicator: arg 1: expected native of type *widget.List")
 				}
@@ -33158,9 +31941,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//add-indicator: arg 2: expected native of type *op.Ops")
 				}
@@ -33185,9 +31968,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//add-track: arg 1: expected native of type *widget.List")
 				}
@@ -33204,9 +31987,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//add-track: arg 2: expected native of type *op.Ops")
 				}
@@ -33231,9 +32014,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//alignment!: arg 1: expected native of type *widget.List")
 				}
@@ -33279,9 +32062,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//alignment?: arg 1: expected native of type *widget.List")
 				}
@@ -33307,9 +32090,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//axis!: arg 1: expected native of type *widget.List")
 				}
@@ -33355,9 +32138,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//axis?: arg 1: expected native of type *widget.List")
 				}
@@ -33383,9 +32166,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//indicator-hovered: arg 1: expected native of type *widget.List")
 				}
@@ -33412,9 +32195,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//layout: arg 1: expected native of type *widget.List")
 				}
@@ -33428,21 +32211,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.List)//layout: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.List)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.List)//layout: arg 2: expected native")
@@ -33482,11 +32259,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(*widget.List)//layout: arg 4: callback result: expected native of type layout.Dimensions",
+										"Go(*widget.List)//layout: arg 4: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -33515,7 +32292,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg3Val = layout.ListElement(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val, arg3Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val, arg3Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -33528,9 +32305,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//list!: arg 1: expected native of type *widget.List")
 				}
@@ -33547,9 +32324,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *layout.List
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*layout.List)
-				if !ok {
+				if vc, ok := v.Value.(*layout.List); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//list!: arg 2: expected native of type *layout.List")
 				}
@@ -33574,9 +32351,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//list?: arg 1: expected native of type *widget.List")
 				}
@@ -33602,9 +32379,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//position!: arg 1: expected native of type *widget.List")
 				}
@@ -33621,9 +32398,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *layout.Position
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*layout.Position)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Position); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//position!: arg 2: expected native of type *layout.Position")
 				}
@@ -33648,9 +32425,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//position?: arg 1: expected native of type *widget.List")
 				}
@@ -33676,9 +32453,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scroll-by: arg 1: expected native of type *widget.List")
 				}
@@ -33710,9 +32487,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scroll-distance: arg 1: expected native of type *widget.List")
 				}
@@ -33739,9 +32516,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scroll-to: arg 1: expected native of type *widget.List")
 				}
@@ -33773,9 +32550,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scroll-to-end!: arg 1: expected native of type *widget.List")
 				}
@@ -33807,9 +32584,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scroll-to-end?: arg 1: expected native of type *widget.List")
 				}
@@ -33835,9 +32612,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scrollbar!: arg 1: expected native of type *widget.List")
 				}
@@ -33854,9 +32631,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal *widget.Scrollbar
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scrollbar!: arg 2: expected native of type *widget.Scrollbar")
 				}
@@ -33881,9 +32658,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//scrollbar?: arg 1: expected native of type *widget.List")
 				}
@@ -33909,9 +32686,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//track-hovered: arg 1: expected native of type *widget.List")
 				}
@@ -33938,9 +32715,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.List
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//update: arg 1: expected native of type *widget.List")
 				}
@@ -33954,21 +32731,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.List)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.List)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.List)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.List)//update: arg 2: expected native")
@@ -34008,7 +32779,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.List)//update: arg 5: expected decimal")
 			}
-			arg0Val.Update(*arg1Val, arg2Val, arg3Val, arg4Val)
+			arg0Val.Update(arg1Val, arg2Val, arg3Val, arg4Val)
 			return arg0
 		},
 	},
@@ -34019,9 +32790,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//cancelled!: arg 1: expected native of type *widget.Press")
 				}
@@ -34053,9 +32824,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//cancelled?: arg 1: expected native of type *widget.Press")
 				}
@@ -34081,9 +32852,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//end!: arg 1: expected native of type *widget.Press")
 				}
@@ -34100,9 +32871,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal time.Time
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(time.Time)
-				if !ok {
+				if vc, ok := v.Value.(time.Time); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//end!: arg 2: expected native of type time.Time")
 				}
@@ -34121,9 +32892,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//end?: arg 1: expected native of type *widget.Press")
 				}
@@ -34149,9 +32920,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//position!: arg 1: expected native of type *widget.Press")
 				}
@@ -34168,9 +32939,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//position!: arg 2: expected native of type image.Point")
 				}
@@ -34189,9 +32960,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//position?: arg 1: expected native of type *widget.Press")
 				}
@@ -34217,9 +32988,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//start!: arg 1: expected native of type *widget.Press")
 				}
@@ -34236,9 +33007,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal time.Time
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(time.Time)
-				if !ok {
+				if vc, ok := v.Value.(time.Time); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//start!: arg 2: expected native of type time.Time")
 				}
@@ -34257,9 +33028,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Press
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Press)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Press); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Press)//start?: arg 1: expected native of type *widget.Press")
 				}
@@ -34285,9 +33056,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Region
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Region)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Region); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Region)//baseline!: arg 1: expected native of type *widget.Region")
 				}
@@ -34319,9 +33090,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Region
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Region)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Region); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Region)//baseline?: arg 1: expected native of type *widget.Region")
 				}
@@ -34347,9 +33118,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Region
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Region)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Region); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Region)//bounds!: arg 1: expected native of type *widget.Region")
 				}
@@ -34366,9 +33137,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal image.Rectangle
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(image.Rectangle)
-				if !ok {
+				if vc, ok := v.Value.(image.Rectangle); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Region)//bounds!: arg 2: expected native of type image.Rectangle")
 				}
@@ -34387,9 +33158,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Region
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Region)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Region); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Region)//bounds?: arg 1: expected native of type *widget.Region")
 				}
@@ -34415,9 +33186,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//add-drag: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34434,9 +33205,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//add-drag: arg 2: expected native of type *op.Ops")
 				}
@@ -34461,9 +33232,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//add-indicator: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34480,9 +33251,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//add-indicator: arg 2: expected native of type *op.Ops")
 				}
@@ -34507,9 +33278,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//add-track: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34526,9 +33297,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//add-track: arg 2: expected native of type *op.Ops")
 				}
@@ -34553,9 +33324,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//dragging: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34582,9 +33353,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//indicator-hovered: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34611,9 +33382,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//scroll-distance: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34640,9 +33411,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//track-hovered: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34669,9 +33440,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Scrollbar
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//update: arg 1: expected native of type *widget.Scrollbar")
 				}
@@ -34685,21 +33456,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Scrollbar)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Scrollbar)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Scrollbar)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Scrollbar)//update: arg 2: expected native")
@@ -34739,7 +33504,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Scrollbar)//update: arg 5: expected decimal")
 			}
-			arg0Val.Update(*arg1Val, arg2Val, arg3Val, arg4Val)
+			arg0Val.Update(arg1Val, arg2Val, arg3Val, arg4Val)
 			return arg0
 		},
 	},
@@ -34750,9 +33515,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//alignment!: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34798,9 +33563,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//alignment?: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34826,9 +33591,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//clear-selection: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34853,9 +33618,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//focused: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34882,9 +33647,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//line-height!: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34901,9 +33666,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var newVal unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				newVal, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					newVal = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//line-height!: arg 2: expected native of type unit.Sp")
 				}
@@ -34922,9 +33687,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//line-height-scale!: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34956,9 +33721,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//line-height-scale?: arg 1: expected native of type *widget.Selectable")
 				}
@@ -34984,9 +33749,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//line-height?: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35012,9 +33777,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//max-lines!: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35046,9 +33811,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//max-lines?: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35074,9 +33839,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//regions: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35111,23 +33876,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg3Val[i], ok = v.Value.(widget.Region)
-						if !ok {
+						if vc, ok := v.Value.(*widget.Region); ok {
+							arg3Val[i] = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(*widget.Selectable)//regions: arg 4: block item: expected native of type widget.Region")
+							return env.NewError("Go(*widget.Selectable)//regions: arg 4: block item: expected native of type *widget.Region")
 						}
 					default:
 						ps.FailureFlag = true
 						return env.NewError("Go(*widget.Selectable)//regions: arg 4: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg3Val, ok = v.Value.([]widget.Region)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Selectable)//regions: arg 4: expected native of type []widget.Region")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -35144,7 +33902,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(widget.Region)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*widget.Region)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -35158,9 +33916,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//selected-text: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35187,9 +33945,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//selection: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35221,9 +33979,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//selection-len: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35250,9 +34008,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//set-caret: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35291,9 +34049,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//set-text: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35325,9 +34083,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//text: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35354,9 +34112,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//truncated: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35383,9 +34141,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//truncator!: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35417,9 +34175,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//truncator?: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35445,9 +34203,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//update: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35461,26 +34219,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Selectable)//update: arg 1: expected native")
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//update: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(*widget.Selectable)//update: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(*widget.Selectable)//update: arg 2: expected native")
 			}
-			res0 := arg0Val.Update(*arg1Val)
+			res0 := arg0Val.Update(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewInteger(boolToInt64(res0))
 			return res0Obj
@@ -35493,9 +34245,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//wrap-policy!: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35541,9 +34293,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.Selectable
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.Selectable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Selectable); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.Selectable)//wrap-policy?: arg 1: expected native of type *widget.Selectable")
 				}
@@ -35569,9 +34321,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.SubmitEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.SubmitEvent)
-				if !ok {
+				if vc, ok := v.Value.(*widget.SubmitEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.SubmitEvent)//text!: arg 1: expected native of type *widget.SubmitEvent")
 				}
@@ -35603,9 +34355,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.SubmitEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.SubmitEvent)
-				if !ok {
+				if vc, ok := v.Value.(*widget.SubmitEvent); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.SubmitEvent)//text?: arg 1: expected native of type *widget.SubmitEvent")
 				}
@@ -35631,9 +34383,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.TextInfo
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.TextInfo)
-				if !ok {
+				if vc, ok := v.Value.(*widget.TextInfo); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.TextInfo)//truncated!: arg 1: expected native of type *widget.TextInfo")
 				}
@@ -35665,9 +34417,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var self *widget.TextInfo
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				self, ok = v.Value.(*widget.TextInfo)
-				if !ok {
+				if vc, ok := v.Value.(*widget.TextInfo); ok {
+					self = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(*widget.TextInfo)//truncated?: arg 1: expected native of type *widget.TextInfo")
 				}
@@ -35714,21 +34466,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := arg0Val.Option()
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("Go(app.Orientation)//option: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("Go(app.Orientation)//option: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("Go(app.Orientation)//option: arg 1: expected native")
@@ -35736,9 +34482,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("Go(app.Orientation)//option: arg 2: expected native of type *app.Config")
 					}
@@ -35752,7 +34498,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("Go(app.Orientation)//option: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -35796,9 +34542,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val app.ViewEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(app.ViewEvent)
-				if !ok {
+				if vc, ok := v.Value.(app.ViewEvent); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(app.ViewEvent)//implements-event: arg 1: expected native of type app.ViewEvent")
 				}
@@ -35823,9 +34569,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val app.ViewEvent
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(app.ViewEvent)
-				if !ok {
+				if vc, ok := v.Value.(app.ViewEvent); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(app.ViewEvent)//valid: arg 1: expected native of type app.ViewEvent")
 				}
@@ -35873,21 +34619,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := arg0Val.Option()
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("Go(app.WindowMode)//option: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("Go(app.WindowMode)//option: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("Go(app.WindowMode)//option: arg 1: expected native")
@@ -35895,9 +34635,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("Go(app.WindowMode)//option: arg 2: expected native of type *app.Config")
 					}
@@ -35911,7 +34651,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("Go(app.WindowMode)//option: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -35966,9 +34706,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u image.Rectangle
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(image.Rectangle)
-						if !ok {
+						if vc, ok := v.Value.(image.Rectangle); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(clip.Ellipse)//op: arg 1: expected native of type image.Rectangle")
 						}
@@ -35982,9 +34722,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(clip.Ellipse)//op: arg 2: expected native of type *op.Ops")
 				}
@@ -36022,9 +34762,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u image.Rectangle
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(image.Rectangle)
-						if !ok {
+						if vc, ok := v.Value.(image.Rectangle); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(clip.Ellipse)//path: arg 1: expected native of type image.Rectangle")
 						}
@@ -36038,9 +34778,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(clip.Ellipse)//path: arg 2: expected native of type *op.Ops")
 				}
@@ -36078,9 +34818,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u image.Rectangle
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(image.Rectangle)
-						if !ok {
+						if vc, ok := v.Value.(image.Rectangle); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(clip.Ellipse)//push: arg 1: expected native of type image.Rectangle")
 						}
@@ -36094,9 +34834,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(clip.Ellipse)//push: arg 2: expected native of type *op.Ops")
 				}
@@ -36134,9 +34874,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u image.Rectangle
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(image.Rectangle)
-						if !ok {
+						if vc, ok := v.Value.(image.Rectangle); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(clip.Rect)//op: arg 1: expected native of type image.Rectangle")
 						}
@@ -36171,9 +34911,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u image.Rectangle
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(image.Rectangle)
-						if !ok {
+						if vc, ok := v.Value.(image.Rectangle); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(clip.Rect)//path: arg 1: expected native of type image.Rectangle")
 						}
@@ -36208,9 +34948,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u image.Rectangle
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(image.Rectangle)
-						if !ok {
+						if vc, ok := v.Value.(image.Rectangle); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(clip.Rect)//push: arg 1: expected native of type image.Rectangle")
 						}
@@ -36224,9 +34964,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(clip.Rect)//push: arg 2: expected native of type *op.Ops")
 				}
@@ -36260,9 +35000,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(event.Event)//implements-event: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(event.Event)
-				if !ok {
+				if vc, ok := v.Value.(event.Event); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(event.Event)//implements-event: arg 1: expected native of type event.Event")
 				}
@@ -36294,9 +35034,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(event.Filter)//implements-filter: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(event.Filter)
-				if !ok {
+				if vc, ok := v.Value.(event.Filter); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(event.Filter)//implements-filter: arg 1: expected native of type event.Filter")
 				}
@@ -36328,9 +35068,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(font.Face)//face: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(font.Face)
-				if !ok {
+				if vc, ok := v.Value.(font.Face); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(font.Face)//face: arg 1: expected native of type font.Face")
 				}
@@ -36519,9 +35259,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(gpu.GPU)//clear: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(gpu.GPU)
-				if !ok {
+				if vc, ok := v.Value.(gpu.GPU); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//clear: arg 1: expected native of type gpu.GPU")
 				}
@@ -36538,9 +35278,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//clear: arg 2: expected native of type color.NRGBA")
 				}
@@ -36566,9 +35306,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(gpu.GPU)//frame: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(gpu.GPU)
-				if !ok {
+				if vc, ok := v.Value.(gpu.GPU); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//frame: arg 1: expected native of type gpu.GPU")
 				}
@@ -36585,9 +35325,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//frame: arg 2: expected native of type *op.Ops")
 				}
@@ -36604,9 +35344,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg2Val gpu.RenderTarget
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(gpu.RenderTarget)
-				if !ok {
+				if vc, ok := v.Value.(gpu.RenderTarget); ok {
+					arg2Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//frame: arg 3: expected native of type gpu.RenderTarget")
 				}
@@ -36617,9 +35357,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg3Val image.Point
 			switch v := arg3.(type) {
 			case env.Native:
-				var ok bool
-				arg3Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg3Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//frame: arg 4: expected native of type image.Point")
 				}
@@ -36653,9 +35393,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(gpu.GPU)//release: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(gpu.GPU)
-				if !ok {
+				if vc, ok := v.Value.(gpu.GPU); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(gpu.GPU)//release: arg 1: expected native of type gpu.GPU")
 				}
@@ -36687,9 +35427,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("Go(input.Command)//implements-command: arg 1: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(input.Command)
-				if !ok {
+				if vc, ok := v.Value.(input.Command); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(input.Command)//implements-command: arg 1: expected native of type input.Command")
 				}
@@ -36870,11 +35610,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u key.Range
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(key.Range)
-						if !ok {
+						if vc, ok := v.Value.(*key.Range); ok {
+							u = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(key.SelectionEvent)//implements-event: arg 1: expected native of type key.Range")
+							return env.NewError("Go(key.SelectionEvent)//implements-event: arg 1: expected native of type *key.Range")
 						}
 					default:
 						ps.FailureFlag = true
@@ -36905,11 +35645,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u key.Range
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(key.Range)
-						if !ok {
+						if vc, ok := v.Value.(*key.Range); ok {
+							u = *vc
+						} else {
 							ps.FailureFlag = true
-							return env.NewError("Go(key.SnippetEvent)//implements-event: arg 1: expected native of type key.Range")
+							return env.NewError("Go(key.SnippetEvent)//implements-event: arg 1: expected native of type *key.Range")
 						}
 					default:
 						ps.FailureFlag = true
@@ -37012,9 +35752,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(layout.Axis)//convert: arg 2: expected native of type image.Point")
 				}
@@ -37053,26 +35793,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg0Val = layout.Axis(u)
 				}
 			}
-			var arg1Val *f32.Point
+			var arg1Val f32.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*f32.Point)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Point); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(layout.Axis)//f-convert: arg 2: expected native of type *f32.Point")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(layout.Axis)//f-convert: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(layout.Axis)//f-convert: arg 2: expected native")
 			}
-			res0 := arg0Val.FConvert(*arg1Val)
+			res0 := arg0Val.FConvert(arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*f32.Point)")
 			return res0Obj
@@ -37134,21 +35868,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg0Val = layout.Direction(u)
 				}
 			}
-			var arg1Val *layout.Context
+			var arg1Val layout.Context
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(layout.Direction)//layout: arg 2: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("Go(layout.Direction)//layout: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("Go(layout.Direction)//layout: arg 2: expected native")
@@ -37180,11 +35908,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"Go(layout.Direction)//layout: arg 3: callback result: expected native of type layout.Dimensions",
+										"Go(layout.Direction)//layout: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -37213,7 +35941,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := arg0Val.Layout(*arg1Val, arg2Val)
+			res0 := arg0Val.Layout(arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -37247,9 +35975,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val image.Point
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(layout.Direction)//position: arg 2: expected native of type image.Point")
 				}
@@ -37260,9 +35988,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg2Val image.Point
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg2Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(layout.Direction)//position: arg 3: expected native of type image.Point")
 				}
@@ -37439,9 +36167,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(pointer.Cursor)//add: arg 1: expected native of type byte")
 						}
@@ -37455,9 +36183,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(pointer.Cursor)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37493,9 +36221,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(pointer.Cursor)//string: arg 1: expected native of type byte")
 						}
@@ -37633,9 +36361,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(semantic.ClassOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37712,9 +36440,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(semantic.DescriptionOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37760,9 +36488,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(semantic.EnabledOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37808,9 +36536,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(semantic.LabelOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37856,9 +36584,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(semantic.SelectedOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37935,9 +36663,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *op.Ops
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(system.ActionInputOp)//add: arg 2: expected native of type *op.Ops")
 				}
@@ -37973,9 +36701,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(system.TextDirection)//axis: arg 1: expected native of type byte")
 						}
@@ -38010,9 +36738,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(system.TextDirection)//progression: arg 1: expected native of type byte")
 						}
@@ -38047,9 +36775,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg0.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(system.TextDirection)//string: arg 1: expected native of type byte")
 						}
@@ -38105,9 +36833,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					var u byte
 					switch v := arg1.(type) {
 					case env.Native:
-						var ok bool
-						u, ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							u = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("Go(text.Alignment)//align: arg 2: expected native of type byte")
 						}
@@ -38121,9 +36849,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg2Val fixed.Int26_6
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(fixed.Int26_6)
-				if !ok {
+				if vc, ok := v.Value.(fixed.Int26_6); ok {
+					arg2Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("Go(text.Alignment)//align: arg 3: expected native of type fixed.Int26_6")
 				}
@@ -38229,21 +36957,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.CustomRenderer(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-custom-renderer: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-custom-renderer: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-custom-renderer: arg 1: expected native")
@@ -38251,9 +36973,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-custom-renderer: arg 2: expected native of type *app.Config")
 					}
@@ -38267,7 +36989,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-custom-renderer: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38305,21 +37027,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.Decorated(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-decorated: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-decorated: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-decorated: arg 1: expected native")
@@ -38327,9 +37043,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-decorated: arg 2: expected native of type *app.Config")
 					}
@@ -38343,7 +37059,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-decorated: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38424,21 +37140,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.MaxSize(arg0Val, arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-max-size: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-max-size: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-max-size: arg 1: expected native")
@@ -38446,9 +37156,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-max-size: arg 2: expected native of type *app.Config")
 					}
@@ -38462,7 +37172,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-max-size: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38526,21 +37236,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.MinSize(arg0Val, arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-min-size: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-min-size: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-min-size: arg 1: expected native")
@@ -38548,9 +37252,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-min-size: arg 2: expected native of type *app.Config")
 					}
@@ -38564,7 +37268,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-min-size: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38586,9 +37290,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val color.NRGBA
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("app-navigation-color: arg 1: expected native of type color.NRGBA")
 				}
@@ -38599,21 +37303,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.NavigationColor(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-navigation-color: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-navigation-color: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-navigation-color: arg 1: expected native")
@@ -38621,9 +37319,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-navigation-color: arg 2: expected native of type *app.Config")
 					}
@@ -38637,7 +37335,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-navigation-color: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38670,9 +37368,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("app-context: arg 1: expected native of type *op.Ops")
 				}
@@ -38686,26 +37384,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("app-context: arg 1: expected native")
 			}
-			var arg1Val *app.FrameEvent
+			var arg1Val app.FrameEvent
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*app.FrameEvent)
-				if !ok {
+				if vc, ok := v.Value.(*app.FrameEvent); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("app-context: arg 2: expected native of type *app.FrameEvent")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("app-context: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("app-context: arg 2: expected native")
 			}
-			res0 := app.NewContext(arg0Val, *arg1Val)
+			res0 := app.NewContext(arg0Val, arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Context)")
 			return res0Obj
@@ -38809,21 +37501,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.Size(arg0Val, arg1Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-size: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-size: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-size: arg 1: expected native")
@@ -38831,9 +37517,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-size: arg 2: expected native of type *app.Config")
 					}
@@ -38847,7 +37533,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-size: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38860,9 +37546,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val color.NRGBA
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("app-status-color: arg 1: expected native of type color.NRGBA")
 				}
@@ -38873,21 +37559,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.StatusColor(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-status-color: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-status-color: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-status-color: arg 1: expected native")
@@ -38895,9 +37575,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-status-color: arg 2: expected native of type *app.Config")
 					}
@@ -38911,7 +37591,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-status-color: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -38931,21 +37611,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 			res0 := app.Title(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewBuiltin(func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-				var arg0Val *unit.Metric
+				var arg0Val unit.Metric
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*unit.Metric)
-					if !ok {
+					if vc, ok := v.Value.(*unit.Metric); ok {
+						arg0Val = *vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-title: arg 1: expected native of type *unit.Metric")
 					}
-				case env.Integer:
-					if v.Value != 0 {
-						ps.FailureFlag = true
-						return env.NewError("app-title: arg 1: expected integer to be 0 or nil")
-					}
-					arg0Val = nil
 				default:
 					ps.FailureFlag = true
 					return env.NewError("app-title: arg 1: expected native")
@@ -38953,9 +37627,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg1Val *app.Config
 				switch v := arg1.(type) {
 				case env.Native:
-					var ok bool
-					arg1Val, ok = v.Value.(*app.Config)
-					if !ok {
+					if vc, ok := v.Value.(*app.Config); ok {
+						arg1Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("app-title: arg 2: expected native of type *app.Config")
 					}
@@ -38969,7 +37643,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					ps.FailureFlag = true
 					return env.NewError("app-title: arg 2: expected native")
 				}
-				(func(unit.Metric, *app.Config))(res0)(*arg0Val, arg1Val)
+				(func(unit.Metric, *app.Config))(res0)(arg0Val, arg1Val)
 				return nil
 			}, 2, false, false, "Returned func")
 			return res0Obj
@@ -39061,9 +37735,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val image.Rectangle
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(image.Rectangle)
-				if !ok {
+				if vc, ok := v.Value.(image.Rectangle); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("clip-uniform-r-rect: arg 1: expected native of type image.Rectangle")
 				}
@@ -39111,9 +37785,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("event-op: arg 1: expected native of type *op.Ops")
 				}
@@ -39137,9 +37811,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 					return env.NewError("event-op: arg 2: " + err.Error() + "")
 				}
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(event.Tag)
-				if !ok {
+				if vc, ok := v.Value.(event.Tag); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("event-op: arg 2: expected native of type event.Tag")
 				}
@@ -39460,7 +38134,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(font.FontFace)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*font.FontFace)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -39476,7 +38150,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(font.FontFace)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*font.FontFace)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -39490,9 +38164,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val gpu.API
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(gpu.API)
-				if !ok {
+				if vc, ok := v.Value.(gpu.API); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("gpu-gpu: arg 1: expected native of type gpu.API")
 				}
@@ -40311,9 +38985,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val image.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("layout-exact: arg 1: expected native of type image.Point")
 				}
@@ -40358,11 +39032,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"layout-expanded: arg 1: callback result: expected native of type layout.Dimensions",
+										"layout-expanded: arg 1: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -40404,9 +39078,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val image.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("layout-f-pt: arg 1: expected native of type image.Point")
 				}
@@ -40458,11 +39132,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"layout-flexed: arg 2: callback result: expected native of type layout.Dimensions",
+										"layout-flexed: arg 2: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -40693,18 +39367,16 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								// res, ok = v.Value.(layout.Dimensions)
-								resYY, ok := v.Value.(*layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"layout-rigid: arg 1: callback result: expected native of type layout.Dimensions",
+										"layout-rigid: arg 1: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
 									return res
 								}
-								res = *resYY
 							default:
 								fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
 									"layout-rigid: arg 1: callback result: expected native",
@@ -40837,11 +39509,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"layout-stacked: arg 1: callback result: expected native of type layout.Dimensions",
+										"layout-stacked: arg 1: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -40950,9 +39622,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-body-1: arg 1: expected native of type *material.Theme")
 				}
@@ -40986,9 +39658,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-body-2: arg 1: expected native of type *material.Theme")
 				}
@@ -41022,9 +39694,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-button: arg 1: expected native of type *material.Theme")
 				}
@@ -41041,9 +39713,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-button: arg 2: expected native of type *widget.Clickable")
 				}
@@ -41077,9 +39749,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-button-layout: arg 1: expected native of type *material.Theme")
 				}
@@ -41096,9 +39768,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-button-layout: arg 2: expected native of type *widget.Clickable")
 				}
@@ -41125,9 +39797,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-caption: arg 1: expected native of type *material.Theme")
 				}
@@ -41161,9 +39833,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-check-box: arg 1: expected native of type *material.Theme")
 				}
@@ -41180,9 +39852,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Bool
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-check-box: arg 2: expected native of type *widget.Bool")
 				}
@@ -41213,21 +39885,15 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "material.Clickable",
 		Argsn: 3,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *layout.Context
+			var arg0Val layout.Context
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*layout.Context)
-				if !ok {
+				if vc, ok := v.Value.(*layout.Context); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-clickable: arg 1: expected native of type *layout.Context")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("material-clickable: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("material-clickable: arg 1: expected native")
@@ -41235,9 +39901,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-clickable: arg 2: expected native of type *widget.Clickable")
 				}
@@ -41278,11 +39944,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var res layout.Dimensions
 							switch v := ps.Res.(type) {
 							case env.Native:
-								var ok bool
-								res, ok = v.Value.(layout.Dimensions)
-								if !ok {
+								if vc, ok := v.Value.(*layout.Dimensions); ok {
+									res = *vc
+								} else {
 									fmt.Printf("\033[31mError: \033[1m%v\033[m\n\033[31mFrom function \033[1m%v { %v }\033[m\n",
-										"material-clickable: arg 3: callback result: expected native of type layout.Dimensions",
+										"material-clickable: arg 3: callback result: expected native of type *layout.Dimensions",
 										actualFn.Spec.Series.PositionAndSurroundingElements(*ps.Idx),
 										actualFn.Body.Series.PositionAndSurroundingElements(*ps.Idx),
 									)
@@ -41311,7 +39977,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 					arg2Val = layout.Widget(u)
 				}
 			}
-			res0 := material.Clickable(*arg0Val, arg1Val, arg2Val)
+			res0 := material.Clickable(arg0Val, arg1Val, arg2Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*layout.Dimensions)")
 			return res0Obj
@@ -41324,9 +39990,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-decorations: arg 1: expected native of type *material.Theme")
 				}
@@ -41343,9 +40009,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Decorations
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Decorations)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Decorations); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-decorations: arg 2: expected native of type *widget.Decorations")
 				}
@@ -41400,9 +40066,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-editor: arg 1: expected native of type *material.Theme")
 				}
@@ -41419,9 +40085,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Editor
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Editor)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Editor); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-editor: arg 2: expected native of type *widget.Editor")
 				}
@@ -41455,9 +40121,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-h-1: arg 1: expected native of type *material.Theme")
 				}
@@ -41491,9 +40157,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-h-2: arg 1: expected native of type *material.Theme")
 				}
@@ -41527,9 +40193,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-h-3: arg 1: expected native of type *material.Theme")
 				}
@@ -41563,9 +40229,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-h-4: arg 1: expected native of type *material.Theme")
 				}
@@ -41599,9 +40265,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-h-5: arg 1: expected native of type *material.Theme")
 				}
@@ -41635,9 +40301,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-h-6: arg 1: expected native of type *material.Theme")
 				}
@@ -41671,9 +40337,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-icon-button: arg 1: expected native of type *material.Theme")
 				}
@@ -41690,9 +40356,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Clickable
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Clickable)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Clickable); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-icon-button: arg 2: expected native of type *widget.Clickable")
 				}
@@ -41709,9 +40375,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg2Val *widget.Icon
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*widget.Icon)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Icon); ok {
+					arg2Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-icon-button: arg 3: expected native of type *widget.Icon")
 				}
@@ -41745,9 +40411,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-label: arg 1: expected native of type *material.Theme")
 				}
@@ -41764,9 +40430,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val unit.Sp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(unit.Sp)
-				if !ok {
+				if vc, ok := v.Value.(unit.Sp); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-label: arg 2: expected native of type unit.Sp")
 				}
@@ -41794,9 +40460,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-list: arg 1: expected native of type *material.Theme")
 				}
@@ -41813,9 +40479,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.List
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.List)
-				if !ok {
+				if vc, ok := v.Value.(*widget.List); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-list: arg 2: expected native of type *widget.List")
 				}
@@ -41842,9 +40508,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-loader: arg 1: expected native of type *material.Theme")
 				}
@@ -42079,9 +40745,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-overline: arg 1: expected native of type *material.Theme")
 				}
@@ -42115,9 +40781,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-progress-bar: arg 1: expected native of type *material.Theme")
 				}
@@ -42151,9 +40817,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-progress-circle: arg 1: expected native of type *material.Theme")
 				}
@@ -42187,9 +40853,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-radio-button: arg 1: expected native of type *material.Theme")
 				}
@@ -42206,9 +40872,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Enum
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Enum)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Enum); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-radio-button: arg 2: expected native of type *widget.Enum")
 				}
@@ -42249,9 +40915,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-scrollbar: arg 1: expected native of type *material.Theme")
 				}
@@ -42268,9 +40934,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Scrollbar
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Scrollbar)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Scrollbar); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-scrollbar: arg 2: expected native of type *widget.Scrollbar")
 				}
@@ -42297,9 +40963,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-slider: arg 1: expected native of type *material.Theme")
 				}
@@ -42316,9 +40982,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Float
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Float)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Float); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-slider: arg 2: expected native of type *widget.Float")
 				}
@@ -42345,9 +41011,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-subtitle-1: arg 1: expected native of type *material.Theme")
 				}
@@ -42381,9 +41047,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-subtitle-2: arg 1: expected native of type *material.Theme")
 				}
@@ -42417,9 +41083,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *material.Theme
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*material.Theme)
-				if !ok {
+				if vc, ok := v.Value.(*material.Theme); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-switch: arg 1: expected native of type *material.Theme")
 				}
@@ -42436,9 +41102,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val *widget.Bool
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*widget.Bool)
-				if !ok {
+				if vc, ok := v.Value.(*widget.Bool); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("material-switch: arg 2: expected native of type *widget.Bool")
 				}
@@ -42469,26 +41135,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "op.Affine",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *f32.Affine2D
+			var arg0Val f32.Affine2D
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*f32.Affine2D)
-				if !ok {
+				if vc, ok := v.Value.(*f32.Affine2D); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("op-affine: arg 1: expected native of type *f32.Affine2D")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("op-affine: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("op-affine: arg 1: expected native")
 			}
-			res0 := op.Affine(*arg0Val)
+			res0 := op.Affine(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, &res0, "Go(*op.TransformOp)")
 			return res0Obj
@@ -42501,9 +41161,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("op-defer: arg 1: expected native of type *op.Ops")
 				}
@@ -42517,26 +41177,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("op-defer: arg 1: expected native")
 			}
-			var arg1Val *op.CallOp
+			var arg1Val op.CallOp
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(*op.CallOp)
-				if !ok {
+				if vc, ok := v.Value.(*op.CallOp); ok {
+					arg1Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("op-defer: arg 2: expected native of type *op.CallOp")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("op-defer: arg 2: expected integer to be 0 or nil")
-				}
-				arg1Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("op-defer: arg 2: expected native")
 			}
-			op.Defer(arg0Val, *arg1Val)
+			op.Defer(arg0Val, arg1Val)
 			return nil
 		},
 	},
@@ -42607,9 +41261,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val image.Point
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(image.Point)
-				if !ok {
+				if vc, ok := v.Value.(image.Point); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("op-offset: arg 1: expected native of type image.Point")
 				}
@@ -42630,9 +41284,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("op-record: arg 1: expected native of type *op.Ops")
 				}
@@ -42659,9 +41313,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val metadata.Description
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(metadata.Description)
-				if !ok {
+				if vc, ok := v.Value.(metadata.Description); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("opentype-description-to-font: arg 1: expected native of type metadata.Description")
 				}
@@ -42679,26 +41333,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 		Doc:   "opentype.FontToDescription",
 		Argsn: 1,
 		Fn: func(ps *env.ProgramState, arg0, arg1, arg2, arg3, arg4 env.Object) env.Object {
-			var arg0Val *font.Font
+			var arg0Val font.Font
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*font.Font)
-				if !ok {
+				if vc, ok := v.Value.(*font.Font); ok {
+					arg0Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("opentype-font-to-description: arg 1: expected native of type *font.Font")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("opentype-font-to-description: arg 1: expected integer to be 0 or nil")
-				}
-				arg0Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("opentype-font-to-description: arg 1: expected native")
 			}
-			res0 := opentype.FontToDescription(*arg0Val)
+			res0 := opentype.FontToDescription(arg0Val)
 			var res0Obj env.Object
 			res0Obj = *env.NewNative(ps.Idx, res0, "Go(metadata.Description)")
 			return res0Obj
@@ -42725,9 +41373,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg0Val[i], ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							arg0Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("opentype-parse: arg 1: block item: expected native of type byte")
 						}
@@ -42735,13 +41383,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						ps.FailureFlag = true
 						return env.NewError("opentype-parse: arg 1: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.([]byte)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("opentype-parse: arg 1: expected native of type []byte")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -42778,9 +41419,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg0Val[i], ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							arg0Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("opentype-parse-collection: arg 1: block item: expected native of type byte")
 						}
@@ -42788,13 +41429,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						ps.FailureFlag = true
 						return env.NewError("opentype-parse-collection: arg 1: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.([]byte)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("opentype-parse-collection: arg 1: expected native of type []byte")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -42811,7 +41445,7 @@ var builtinsGenerated = map[string]*env.Builtin{
 			{
 				items := make([]env.Object, len(res0))
 				for i, it := range res0 {
-					items[i] = *env.NewNative(ps.Idx, it, "Go(font.FontFace)")
+					items[i] = *env.NewNative(ps.Idx, &it, "Go(*font.FontFace)")
 				}
 				res0Obj = *env.NewBlock(*env.NewTSeries(items))
 			}
@@ -42833,9 +41467,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-fill: arg 1: expected native of type *op.Ops")
 				}
@@ -42852,9 +41486,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-fill: arg 2: expected native of type color.NRGBA")
 				}
@@ -42873,9 +41507,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-fill-shape: arg 1: expected native of type *op.Ops")
 				}
@@ -42892,9 +41526,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg1Val color.NRGBA
 			switch v := arg1.(type) {
 			case env.Native:
-				var ok bool
-				arg1Val, ok = v.Value.(color.NRGBA)
-				if !ok {
+				if vc, ok := v.Value.(color.NRGBA); ok {
+					arg1Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-fill-shape: arg 2: expected native of type color.NRGBA")
 				}
@@ -42902,26 +41536,20 @@ var builtinsGenerated = map[string]*env.Builtin{
 				ps.FailureFlag = true
 				return env.NewError("paint-fill-shape: arg 2: expected native")
 			}
-			var arg2Val *clip.Op
+			var arg2Val clip.Op
 			switch v := arg2.(type) {
 			case env.Native:
-				var ok bool
-				arg2Val, ok = v.Value.(*clip.Op)
-				if !ok {
+				if vc, ok := v.Value.(*clip.Op); ok {
+					arg2Val = *vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-fill-shape: arg 3: expected native of type *clip.Op")
 				}
-			case env.Integer:
-				if v.Value != 0 {
-					ps.FailureFlag = true
-					return env.NewError("paint-fill-shape: arg 3: expected integer to be 0 or nil")
-				}
-				arg2Val = nil
 			default:
 				ps.FailureFlag = true
 				return env.NewError("paint-fill-shape: arg 3: expected native")
 			}
-			paint.FillShape(arg0Val, arg1Val, *arg2Val)
+			paint.FillShape(arg0Val, arg1Val, arg2Val)
 			return nil
 		},
 	},
@@ -42960,9 +41588,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val image.Image
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(image.Image)
-				if !ok {
+				if vc, ok := v.Value.(image.Image); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-image-op: arg 1: expected native of type image.Image")
 				}
@@ -43013,9 +41641,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 			var arg0Val *op.Ops
 			switch v := arg0.(type) {
 			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.(*op.Ops)
-				if !ok {
+				if vc, ok := v.Value.(*op.Ops); ok {
+					arg0Val = vc
+				} else {
 					ps.FailureFlag = true
 					return env.NewError("paint-push-opacity: arg 1: expected native of type *op.Ops")
 				}
@@ -43828,13 +42456,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						}
 					}
 				}
-			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.([]text.ShaperOption)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("text-shaper: arg 1: expected native of type []text.ShaperOption")
-				}
 			case env.Integer:
 				if v.Value != 0 {
 					ps.FailureFlag = true
@@ -43861,9 +42482,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg0Val *text.Shaper
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*text.Shaper)
-					if !ok {
+					if vc, ok := v.Value.(*text.Shaper); ok {
+						arg0Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("text-no-system-fonts: arg 1: expected native of type *text.Shaper")
 					}
@@ -43914,11 +42535,11 @@ var builtinsGenerated = map[string]*env.Builtin{
 							var u font.FontFace
 							switch v := it.(type) {
 							case env.Native:
-								var ok bool
-								u, ok = v.Value.(font.FontFace)
-								if !ok {
+								if vc, ok := v.Value.(*font.FontFace); ok {
+									u = *vc
+								} else {
 									ps.FailureFlag = true
-									return env.NewError("text-with-collection: arg 1: block item: expected native of type font.FontFace")
+									return env.NewError("text-with-collection: arg 1: block item: expected native of type *font.FontFace")
 								}
 							default:
 								ps.FailureFlag = true
@@ -43927,13 +42548,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 							arg0Val[i] = text.FontFace(u)
 						}
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.([]text.FontFace)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("text-with-collection: arg 1: expected native of type []text.FontFace")
 				}
 			case env.Integer:
 				if v.Value != 0 {
@@ -43951,9 +42565,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				var arg0Val *text.Shaper
 				switch v := arg0.(type) {
 				case env.Native:
-					var ok bool
-					arg0Val, ok = v.Value.(*text.Shaper)
-					if !ok {
+					if vc, ok := v.Value.(*text.Shaper); ok {
+						arg0Val = vc
+					} else {
 						ps.FailureFlag = true
 						return env.NewError("text-with-collection: arg 1: expected native of type *text.Shaper")
 					}
@@ -44218,9 +42832,9 @@ var builtinsGenerated = map[string]*env.Builtin{
 				for i, it := range v.Series.S {
 					switch v := it.(type) {
 					case env.Native:
-						var ok bool
-						arg0Val[i], ok = v.Value.(byte)
-						if !ok {
+						if vc, ok := v.Value.(byte); ok {
+							arg0Val[i] = vc
+						} else {
 							ps.FailureFlag = true
 							return env.NewError("widget-icon: arg 1: block item: expected native of type byte")
 						}
@@ -44228,13 +42842,6 @@ var builtinsGenerated = map[string]*env.Builtin{
 						ps.FailureFlag = true
 						return env.NewError("widget-icon: arg 1: block item: expected native")
 					}
-				}
-			case env.Native:
-				var ok bool
-				arg0Val, ok = v.Value.([]byte)
-				if !ok {
-					ps.FailureFlag = true
-					return env.NewError("widget-icon: arg 1: expected native of type []byte")
 				}
 			case env.Integer:
 				if v.Value != 0 {
