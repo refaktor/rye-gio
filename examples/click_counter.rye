@@ -1,18 +1,18 @@
 rye .needs { gio }
 
 do\par gio {
-	
+
 	go does {
-		
+
 		win: app-window
 		thm: material-theme
 
 		cnt: 0
 		btn: widget-clickable
-		
+
 		forever {
 			evt:: win .event
-			
+
 			switch evt .kind {
 				"app.DestroyEvent" { return 0 }
 				"app.FrameEvent" {
@@ -23,11 +23,11 @@ do\par gio {
 
 					layout-uniform-inset 30.0 |layout gtx fn { gtx } {
 						layout-flex .axis! layout-vertical
-						|layout gtx [						
+						|layout gtx [
 							layout-rigid fn { gtx } { material-h-2 thm "Click count: " .concat cnt |layout gtx }
 							layout-rigid fn { gtx } { material-button thm btn "Click me" |layout gtx }
 						]
-					}					
+					}
 
 					frm:: evt .frame?
 					frm gtx .ops?
@@ -38,4 +38,3 @@ do\par gio {
 	}
 	app-main
 }
-
